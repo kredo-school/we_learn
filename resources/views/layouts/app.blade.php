@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,70 +15,82 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-z1PTOm0wioyCAOAK6U5iybfM5ZJTYgZfRAF2B+Pd6J3K6OWw/m6cE6H5pIFqucyg5l5WyR8mU/+QYU6ig3U6Kw==" crossorigin="anonymous" />
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+        <nav class="flex items-center justify-between flex-wrap bg-white">
+            <div class="flex items-center flex-shrink-0 text-white mr-6">
+              <a href="/">
+                <img src="assets/images/logo.png" alt="Logo" class="h-[100px] w-[100px]">
+              </a>
             </div>
-        </nav>
+            <div class="flex items-center">
+                <div class="relative">
+                  <button class="text-sm text-black hover:text-[#ED4C59] px-4 py-2">
+                    Login
+                  </button>
+                  <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Learner
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Teacher
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Exchange
+                    </a>
+                  </div>
+                </div>
+                <div class="relative">
+                  <button class="text-sm text-black hover:text-[#ED4C59] px-4 py-2">
+                    Register
+                  </button>
+                  <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Learner
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Teacher
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      Exchange
+                    </a>
+                  </div>
+                </div>
+                <a href="#" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-6">
+                  Contact us
+                </a>
+              </div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+
+
+
+              <div class="md:hidden">
+                <button type="button" class="text-white hover:text-gray-200 focus:outline-none focus:text-gray-200" aria-label="Toggle menu">
+                  <svg viewBox="0 0 20 20" class="h-6 w-6 fill-current">
+                    <path d="M3 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zM3 9h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zM3 14h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </nav>
+
+
+
+
+            @yield('contents')
+
+            @include('layouts.footer')
+
     </div>
 </body>
 </html>
