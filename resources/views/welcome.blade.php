@@ -2,6 +2,8 @@
 
 @section('contents')
 
+@include('landing_nav')
+
 <div class="h-screen bg-cover bg-center bg-[url('/assets/images/pexels-buro-millennial-1438072.jpg')] grayscale">
     <div class="flex flex-col justify-center items-center h-full w-full bg-[#000000]/70">
         <p class="text-9xl text-[#FFFFFF]">Learn & Teach</p>
