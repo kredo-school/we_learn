@@ -15,7 +15,7 @@
       </a>
 
       {{-- login user name & profile,logout --}}
-      <div class="relative">
+      <div class="relative relative-hover">
         <div class="flex items-center">
             <button class="text-sm text-black hover:text-[#ED4C59] px-4 py-2">
               <img src="assets/images/user-circle.png" alt="User-pic" class="w-7 h-7 object-contain" />
