@@ -90,6 +90,10 @@
             @yield('contents')
 
             @include('layouts.footer')
+            @include("registration_nav")
+            @include("after_learners_nav")
+            @include("after_login_nav")
+
 
     </div>
 </body>
