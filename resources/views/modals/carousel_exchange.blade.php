@@ -1,4 +1,4 @@
-<div class="fixed top-0 left-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-[rgba(0,0,0,0.5)]"
+<div class="fixed top-0 left-0 z-[1055] h-full w-full overflow-hidden outline-none bg-[rgba(0,0,0,0.5)]"
     id="exchangeCarousel" style="display: none">
     <div id="default-carousel" class="relative w-full h-full" data-carousel="static">
         {{--  carousel teacher  --}}
@@ -61,7 +61,7 @@
                                 <option value>Option 2</option>
                                 <option value>Option 3</option>
                             </select>
-                            
+
                         </div>
 
                         <div class="my-10">

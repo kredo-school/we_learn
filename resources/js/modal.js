@@ -1,36 +1,7 @@
-// window.next = function next(modalType, currentModal)
-// {
-//     switch (modalType)
-//     {
-//         case 'learner':
-//             document.getElementById('learnerModal' + currentModal).style.display = 'none';
-//             document.getElementById('learnerModal' + (currentModal + 1)).style.display = 'block';
-//             break;
-//         case 'teacher':
-//             // open teacher modal
-//             break;
-//     }
-// }
-
-// window.back = function back(modalType, currentModal)
-// {
-//     switch (modalType)
-//     {
-//         case 'learner':
-//             document.getElementById('learnerModal' + currentModal).style.display = 'none';
-//             document.getElementById('learnerModal' + (currentModal - 1)).style.display = 'block';
-//             break;
-//         case 'teacher':
-//             // open teacher modal
-//             break;
-//     }
-
-// }
-
 window.showCarousel = function showCarousel(modalType)
 {
     //Disable scrolling
-    var body = document.getElementById('body');
+    var body = document.getElementsByTagName("BODY")[0];
     body.classList.add('overflow-hidden');
 
     switch (modalType)
@@ -51,15 +22,13 @@ window.showCarousel = function showCarousel(modalType)
 window.closeCarousel = function closeCarousel(carouselType)
 {
     //Enable scrolling
-    var body = document.getElementById('body');
+    var body = document.getElementsByTagName("BODY")[0];
     body.classList.remove('overflow-hidden');
 
     switch (carouselType)
     {
         case 'learner':
             document.getElementById('learnerCarousel').style.display = 'none';
-            // document.getElementById('learnerModal2').style.display = 'none';
-            // document.getElementById('learnerModal3').style.display = 'none';
             break;
 
         case 'teacher':
