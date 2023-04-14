@@ -531,6 +531,9 @@ video {
 .mr-6 {
   margin-right: 1.5rem;
 }
+.ml-3 {
+  margin-left: 0.75rem;
+}
 .block {
   display: block;
 }
@@ -570,6 +573,12 @@ video {
 .h-screen {
   height: 100vh;
 }
+.h-\[\FF16\FF10px\] {
+  height: ６０px;
+}
+.h-\[60px\] {
+  height: 60px;
+}
 .w-16 {
   width: 4rem;
 }
@@ -593,6 +602,15 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-\[160px\] {
+  width: 160px;
+}
+.w-\[px\] {
+  width: px;
+}
+.w-\[60px\] {
+  width: 60px;
 }
 .flex-shrink-0 {
   flex-shrink: 0;
