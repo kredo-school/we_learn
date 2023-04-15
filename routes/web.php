@@ -20,3 +20,28 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    // Route::get('/settings', function () {
+    //     return view('auth.settings');
+    // })->name('settings');
+});
+
+Route::get('/learners-register', function () {
+    return view('auth.learners_register');
+})->name('learners_register');
+
+// route for excanges register
+Route::get('/exchanges-register', function () {
+    return view('auth.exchanges_register');
+})->name('exchanges_register');
+
+Route::get('/teachers-register', function () {
+    return view('auth.teachers_register');
+})->name('teachers_register');
+
+
+
