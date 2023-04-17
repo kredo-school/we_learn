@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-white">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <a href="/">
+    <a href="{{ url('/') }}">
       <img src="assets/images/logo.png" alt="Logo" class="h-[60px] w-[60px] ml-3">
     </a>
   </div>
@@ -26,13 +26,13 @@
         Register
       </button>
       <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('learners_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Learner
         </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('teachers_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Teacher
         </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('exchanges_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Exchange
         </a>
       </div>
