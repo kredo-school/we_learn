@@ -43,5 +43,9 @@ Route::get('/teachers-register', function () {
     return view('auth.teachers_register');
 })->name('teachers_register');
 
+// FAQ
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
 
 
