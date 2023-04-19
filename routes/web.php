@@ -43,5 +43,7 @@ Route::get('/teachers-register', function () {
     return view('auth.teachers_register');
 })->name('teachers_register');
 
-
+Route::get('/learners', function () {
+    return view('profile.learners');
+})->name('learners');
 
