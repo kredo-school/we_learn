@@ -44,4 +44,18 @@ Route::get('/teachers-register', function () {
 })->name('teachers_register');
 
 
+//route for homepages
+Route::get('/learner/home', function () {
+    return view('home.home_learner');
+})->name('home_learner');
+
+Route::get('/teacher/home', function () {
+    return view('home.home_teacher');
+})->name('home_teacher');
+
+Route::get('/exchange/home', function () {
+    return view('home.home_exchange');
+})->name('home_exchange');
+
+
 
