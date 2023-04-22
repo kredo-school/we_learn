@@ -68,4 +68,22 @@ Route::get('/ticket/payment', function () {
     return view('home.payment');
 })->name('payment');
 
+// route for teacher list
+Route::get('/list/teacher', function () {
+    return view('home.teacher_list');
+})->name('list');
 
+// route for lesson schedule for learner
+Route::get('/schedule/learner', function () {
+    return view('home.lesson_schedule_learner');
+})->name('schedule_learner');
+
+// route for chat of learner
+Route::get('/chat/learner', function () {
+    return view('home.chat_for_learner');
+})->name('chat_learner');
+
+// route for after clicking view button page
+Route::get('/view/teacherprofile', function () {
+    return view('home.click_view');
+})->name('click_view');
