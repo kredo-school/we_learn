@@ -57,5 +57,15 @@ Route::get('/exchange/home', function () {
     return view('home.home_exchange');
 })->name('home_exchange');
 
+// route for click yes when buy ticket
+Route::get('/ticket/yes', function () {
+    return view('home.click_yes');
+})->name('ticket_yes');
+
+
+// route for payment page
+Route::get('/ticket/payment', function () {
+    return view('home.payment');
+})->name('payment');
 
 
