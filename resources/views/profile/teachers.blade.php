@@ -2,9 +2,6 @@
 
 @include('after_login_nav')
 
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-
 <main class="profile-page">
   <section class="relative block h-500-px">
     {{-- background-image --}}
@@ -28,63 +25,85 @@
           <div class="flex flex-wrap justify-center">
             <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
               <div class="relative">
-                <img alt="profile picture" src="/assets/images/pexels-andrea-piacquadio-3781789.jpg" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+
+                <div class="bg-[url('/assets/images/pexels-andrea-piacquadio-3781789.jpg')] shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 bg-center bg-cover bg-no-repeat"></div>
 
               </div>
             </div>
             {{-- button --}}
             <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
                 <div class="py-6 px-3 mt-32 sm:mt-0">
-                  <button class="bg-[#ED4C59] hover:bg-[#ED4C59] active:bg-[#ED4C59] text-black font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
-                    Edit
-                  </button>
+                    <button onclick="location.href='{{ url('#') }}'"
+                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    EDIT
+                    </button>
                 </div>
               </div>
           </div>
           {{-- Name of teacher's  --}}
-          <div class="text-center mt-12">
+          <div class="text-center mt-12 flex flex-col justify-center items-center">
             <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
               Jennie Wilson
             </h3>
-            {{-- address --}}
-            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-              <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-              Los Angeles, California
+            {{-- Address --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                Regidence/Country :
+              <span class="mb-2 text-blueGray-600">Los Angeles, California</span>
+            </div>
+            {{-- Age --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-hourglass-half mr-2 text-lg text-blueGray-400"></i>
+              Age :
+              <span class="mb-2 text-blueGray-600">19</span>
+            </div>
+            {{-- Gender --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-restroom mr-2 text-lg text-blueGray-400"></i>
+              Gender :
+              <span class="mb-2 text-blueGray-600">Female</span>
             </div>
             {{-- Occupation --}}
-            <div class="mb-2 text-blueGray-600">
-              <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>Solution Manager - Creative Tim Officer
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+              <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+              Occupation :
+              <span class="mb-2 text-blueGray-600">Solution Manager - Creative Tim Officer</span>
             </div>
             {{-- Language --}}
-            <div class="mb-2 text-blueGray-600">
-              <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>University of Computer Science
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-microphone mr-2 text-lg text-blueGray-400"></i>
+                Language :
+                <span class="mb-2 text-blueGray-600">English</span>
             </div>
             {{--Subject  --}}
-            <div class="mb-2 text-blueGray-600">
-                <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i><span class="mb-2 text-blueGray-600">Subject:</span>I'm good at Math.
-              </div>
-          </div>
-          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-book mr-2 text-lg text-blueGray-400"></i>
+                Subject :
+                <span class="mb-2 text-blueGray-600">I'm good at Math.</span>
+            </div>
+            {{--About me  --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-face-smile mr-2 text-lg text-blueGray-400"></i>
+                About me :
+                <span class="mb-2 text-blueGray-600">Hello.I'm excited to meet you!</span>
+            </div>
+            {{-- Online/offline  --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold mb-6">
+                <i class="fa-solid fa-people-arrows mr-2 text-lg text-blueGray-400"></i>
+                Online/Offline :
+                <span class="mb-2 text-blueGray-600">Online</span>
+            </div>
+        </div>
+          {{-- <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
             <div class="flex flex-wrap justify-center">
               <div class="w-full lg:w-9/12 px-4">
 
-                <a href="#pablo" class="font-normal text-pink-500">Show more</a>
+                <a href="#ticket page" class="font-normal text-[#ED4C59]"><i class="fa-solid fa-ticket"></i>    3 Available</a>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
     </div>
-    <footer class="relative bg-blueGray-200 pt-8 pb-6 mt-8">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-        <div class="text-sm text-blueGray-500 font-semibold py-1">
-          Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
   </section>
 </main>

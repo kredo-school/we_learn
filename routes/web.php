@@ -52,3 +52,7 @@ Route::get('/teachers', function () {
     return view('profile.teachers');
 })->name('teachers');
 
+Route::get('/exchanges', function () {
+    return view('profile.exchanges');
+})->name('exchanges');
+

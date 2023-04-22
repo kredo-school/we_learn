@@ -6,7 +6,7 @@
   <section class="relative block h-500-px">
     {{-- background-image --}}
     <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
-            background-image: url('/assets/images/pexels-andrea-piacquadio-3776178.jpg');
+            background-image: url('/assets/images/pexels-djordje-petrovic-2102415.jpg');
           ">
       <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
     </div>
@@ -26,7 +26,7 @@
             <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
               <div class="relative">
 
-                <div class="bg-[url('/assets/images/pexels-andrea-piacquadio-3776178.jpg')] shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 bg-center bg-cover bg-no-repeat"></div>
+                <div class="bg-[url('/assets/images/pexels-djordje-petrovic-2102415.jpg')] shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 bg-center bg-cover bg-no-repeat"></div>
 
               </div>
             </div>
@@ -43,31 +43,31 @@
           {{-- Name of teacher's  --}}
           <div class="text-center mt-12 flex flex-col justify-center items-center">
             <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-              Jennie Wilson
+              John Smith
             </h3>
             {{-- Address --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                 <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                 Regidence/Country :
-              <span class="mb-2 text-blueGray-600">Tokyo Japan</span>
+              <span class="mb-2 text-blueGray-600">LA USA</span>
             </div>
             {{-- Age --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                 <i class="fa-solid fa-hourglass-half mr-2 text-lg text-blueGray-400"></i>
               Age :
-              <span class="mb-2 text-blueGray-600">14</span>
+              <span class="mb-2 text-blueGray-600">43</span>
             </div>
             {{-- Gender --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                 <i class="fa-solid fa-restroom mr-2 text-lg text-blueGray-400"></i>
               Gender :
-              <span class="mb-2 text-blueGray-600">Female</span>
+              <span class="mb-2 text-blueGray-600">Male</span>
             </div>
             {{-- Occupation --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
               <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
               Occupation :
-              <span class="mb-2 text-blueGray-600">Student</span>
+              <span class="mb-2 text-blueGray-600">Programmer</span>
             </div>
             {{-- Language --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
@@ -75,27 +75,33 @@
                 Language :
                 <span class="mb-2 text-blueGray-600">English</span>
             </div>
+            {{-- Category --}}
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+                <i class="fa-solid fa-microphone mr-2 text-lg text-blueGray-400"></i>
+                Category :
+                <span class="mb-2 text-blueGray-600">Programing</span>
+            </div>
             {{--About me  --}}
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                 <i class="fa-solid fa-face-smile mr-2 text-lg text-blueGray-400"></i>
                 About me :
-                <span class="mb-2 text-blueGray-600">Hello.I'm a junior high school student.</span>
+                <span class="mb-2 text-blueGray-600">Hello.I would love to teach you about programing.</span>
             </div>
             {{-- Online/offline  --}}
-            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold mb-6">
                 <i class="fa-solid fa-people-arrows mr-2 text-lg text-blueGray-400"></i>
                 Online/Offline :
                 <span class="mb-2 text-blueGray-600">Online</span>
             </div>
         </div>
-          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+          {{-- <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
             <div class="flex flex-wrap justify-center">
               <div class="w-full lg:w-9/12 px-4">
 
                 <a href="#ticket page" class="font-normal text-[#ED4C59]"><i class="fa-solid fa-ticket"></i> 3 Available</a>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
