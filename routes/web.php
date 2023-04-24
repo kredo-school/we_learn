@@ -29,12 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     //     return view('auth.settings');
     // })->name('settings');
 });
-
+//Registration
 Route::get('/learners-register', function () {
     return view('auth.learners_register');
 })->name('learners_register');
 
-// route for excanges register
 Route::get('/exchanges-register', function () {
     return view('auth.exchanges_register');
 })->name('exchanges_register');
@@ -55,4 +54,18 @@ Route::get('/teachers', function () {
 Route::get('/exchanges', function () {
     return view('profile.exchanges');
 })->name('exchanges');
+
+// Login
+Route::get('/learners-login', function () {
+    return view('auth.learners_login');
+})->name('learners_login');
+
+Route::get('/teachers-login', function () {
+    return view('auth.teachers_login');
+})->name('teachers_login');
+
+Route::get('/exchanges-login', function () {
+    return view('auth.exchanges_login');
+})->name('exchanges_login');
+
 

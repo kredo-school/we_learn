@@ -10,13 +10,13 @@
         Login
       </button>
       <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('learners_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Learner
         </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('teachers_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Teacher
         </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('exchanges_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Exchange
         </a>
       </div>
