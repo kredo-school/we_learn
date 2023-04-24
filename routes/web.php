@@ -42,6 +42,19 @@ Route::get('/teachers-register', function () {
     return view('auth.teachers_register');
 })->name('teachers_register');
 
+// PROFILE
+Route::get('/learners', function () {
+    return view('profile.learners');
+})->name('learners');
+
+Route::get('/teachers', function () {
+    return view('profile.teachers');
+})->name('teachers');
+
+Route::get('/exchanges', function () {
+    return view('profile.exchanges');
+})->name('exchanges');
+
 // Login
 Route::get('/learners-login', function () {
     return view('auth.learners_login');
@@ -54,4 +67,5 @@ Route::get('/teachers-login', function () {
 Route::get('/exchanges-login', function () {
     return view('auth.exchanges_login');
 })->name('exchanges_login');
+
 
