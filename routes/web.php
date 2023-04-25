@@ -42,6 +42,11 @@ Route::get('/teachers-register', function () {
     return view('auth.teachers_register');
 })->name('teachers_register');
 
+// FAQ
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
 // PROFILE
 Route::get('/learners', function () {
     return view('profile.learners');
@@ -67,5 +72,3 @@ Route::get('/teachers-login', function () {
 Route::get('/exchanges-login', function () {
     return view('auth.exchanges_login');
 })->name('exchanges_login');
-
-
