@@ -42,6 +42,11 @@ Route::get('/teachers-register', function () {
     return view('auth.teachers_register');
 })->name('teachers_register');
 
+// FAQ
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
 // PROFILE
 Route::get('/learners', function () {
     return view('profile.learners');
@@ -86,7 +91,6 @@ Route::get('/ticket/yes', function () {
     return view('home.click_yes');
 })->name('ticket_yes');
 
-
 // route for payment page
 Route::get('/ticket/payment', function () {
     return view('home.payment');
@@ -111,3 +115,4 @@ Route::get('/chat/learner', function () {
 Route::get('/view/teacherprofile', function () {
     return view('home.click_view');
 })->name('click_view');
+
