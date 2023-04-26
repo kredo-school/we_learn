@@ -3,7 +3,7 @@
 @include('after_learners_nav')
 
 @section('contents')
-    <div>
+    <div class="flex items-center justify-center" >
         <div class="flex flex-col flex-auto h-full p-6">
             <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
                 <div class="flex flex-col h-full overflow-x-auto mb-4">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="ml-4">
                         <button
-                            class="flex items-center justify-center bg-gray-400 hover:bg-gray-600 rounded-xl text-white px-4 py-1 flex-shrink-0">
+                            class="flex items-center justify-center bg-[#F6A5B3] hover:bg-[#ED4C59] rounded-xl text-white px-4 py-1 flex-shrink-0">
                             <span>Send</span>
                             <span class="ml-2">
                                 <svg class="w-4 h-4 transform rotate-45 -mt-px" fill="none" stroke="currentColor"
