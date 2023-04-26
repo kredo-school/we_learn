@@ -35,12 +35,13 @@
                             Tokyo Shibuya
                         </td>
                         <td class="px-6 py-4">
-                            <div class="text-center">
+                            <div data-modal-target="click-view" data-modal-toggle="click-view" class="text-center">
                                 <a href="#"
-                                    class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-                                    view
+                                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                                    View
                                 </a>
                             </div>
+                            @include('modals.modal_click_view_of_teacherlist')
                         </td>
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -55,12 +56,13 @@
                             Tokyo Shibuya
                         </td>
                         <td class="px-6 py-4">
-                            <div class="text-center">
+                            <div data-modal-target="click-view" data-modal-toggle="click-view" class="text-center">
                                 <a href="#"
-                                    class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-                                    view
+                                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                                    View
                                 </a>
                             </div>
+                            @include('modals.modal_click_view_of_teacherlist')
                         </td>
                     </tr>
 
