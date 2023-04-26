@@ -71,7 +71,7 @@
             {{--  register button  --}}
             <div class="flex items-center justify-center mt-8">
                 <button type="submit"
-                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md flex items-center">
                     Pay $10
                 </button>
             </div>

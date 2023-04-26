@@ -14,7 +14,6 @@
         </div>
     </div>
 
-
     <div class="h-screen flex justify-center items-center">
         <div class="flex flex-row">
 
@@ -28,27 +27,25 @@
                 </div>
             </a>
 
-
-
             {{--  button for 5 tickets  --}}
-            <div id="5-tickets" class="h-[250px] w-[250px] bg-white bg-cover bg-center rounded-lg group mx-10">
-                <div class="h-full w-full hover:bg-[#000000]/70 rounded-lg flex flex-col justify-center items-center">
-                    <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">5 Ticket</p>
-                    <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">$40</p>
+            <a href="{{ route('payment') }}">
+                <div id="5-tickets" class="h-[250px] w-[250px] bg-white bg-cover bg-center rounded-lg group mx-10">
+                    <div class="h-full w-full hover:bg-[#000000]/70 rounded-lg flex flex-col justify-center items-center">
+                        <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">5 Ticket</p>
+                        <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">$40</p>
+                    </div>
                 </div>
-            </div>
-
+            </a>
 
             {{--  button for 10 tickets  --}}
-            <div id="10-tickets" class="h-[250px] w-[250px] bg-white bg-cover bg-center rounded-lg group mx-10">
-                <div class="h-full w-full hover:bg-[#000000]/70 rounded-lg flex flex-col justify-center items-center">
-                    <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">10 Ticket</p>
-                    <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">$70</p>
+            <a href="{{ route('payment') }}">
+                <div id="10-tickets" class="h-[250px] w-[250px] bg-white bg-cover bg-center rounded-lg group mx-10">
+                    <div class="h-full w-full hover:bg-[#000000]/70 rounded-lg flex flex-col justify-center items-center">
+                        <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">10 Ticket</p>
+                        <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">$70</p>
+                    </div>
                 </div>
-            </div>
-
-
-
+            </a>
         </div>
     </div>
 </div>

@@ -31,8 +31,8 @@
             <div class="grid justify-items-end px-3 py-2 border-t dark:border-gray-600">
                 <div class="my-1 ">
                     <a href="#"
-                        class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-                        post
+                        class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                        Post
                     </a>
                 </div>
 
@@ -53,8 +53,8 @@
             <div class="grid justify-items-end px-3 py-2 border-t dark:border-gray-600">
                 <div class="my-1 ">
                     <a href="#"
-                        class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-                        post
+                        class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                        Post
                     </a>
                 </div>
 
@@ -105,8 +105,8 @@
                     <td class="px-6 py-4">
                         <div class="my-1 ">
                             <a href="#"
-                                class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-                                view
+                                class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                                View
                             </a>
                         </div>
                     </td>
