@@ -116,3 +116,8 @@ Route::get('/view/teacherprofile', function () {
     return view('home.click_view');
 })->name('click_view');
 
+// exchange category chat after clicking view button
+Route::get('/chat/exchange', function () {
+    return view('home.exchange_category_chat');
+})->name('chat_exchange');
+
