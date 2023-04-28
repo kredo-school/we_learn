@@ -37,7 +37,7 @@
           </a>
         </div>
       </div>
-      <a href="#" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-4">
+      <a href="{{ route('contact_us') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-4">
         Contact us
       </a>
       <a href="{{ url('/') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2">

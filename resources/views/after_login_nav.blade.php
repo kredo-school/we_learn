@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-white">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="#">
+        <a href="{{ url('/') }}">
             <img src="assets/images/logo.png" alt="Logo" class="h-[60px] w-[60px] ml-3">
           </a>
     </div>

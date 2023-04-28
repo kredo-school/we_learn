@@ -1,16 +1,16 @@
 <nav class="flex items-center justify-between flex-wrap bg-white">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="#">
+        <a href="{{ url('/') }}">
             <img src="assets/images/logo.png" alt="Logo" class="h-[60px] w-[60px] ml-3">
           </a>
     </div>
     <div class="flex items-center">
       {{-- Home button--}}
-      <a href="#" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
+      <a href="{{ url('/') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
         <img src="assets/images/round-home.png" alt="round-home"  class="h-8 w-8">
       </a>
       {{-- Calender --}}
-      <a href="#" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
+      <a href="{{ route('schedule_learner') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
         <img src="assets/images/Calendar.png" alt="Calender" class="h-7 w-7">
       </a>
 
