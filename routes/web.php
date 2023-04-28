@@ -60,6 +60,19 @@ Route::get('/exchanges', function () {
     return view('profile.exchanges');
 })->name('exchanges');
 
+// EDIT PROFILE
+Route::get('/editprofile/learners', function () {
+    return view('edit_profile.learners');
+})->name('edit_profile.learners');
+
+Route::get('/editprofile/teachers', function () {
+    return view('edit_profile.teachers');
+})->name('edit_profile.teachers');
+
+Route::get('/editprofile/exchanges', function () {
+    return view('edit_profile.exchanges');
+})->name('edit_profile.exchanges');
+
 // Login
 Route::get('/learners-login', function () {
     return view('auth.learners_login');

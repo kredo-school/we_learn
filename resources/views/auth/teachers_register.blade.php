@@ -114,7 +114,6 @@
                             <option value="science">Science</option>
                             <option value="social studies">Social Studies</option>
                         </select>
-
                     </div>
                 </div>
 
