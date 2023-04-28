@@ -72,3 +72,8 @@ Route::get('/teachers-login', function () {
 Route::get('/exchanges-login', function () {
     return view('auth.exchanges_login');
 })->name('exchanges_login');
+
+// Contact us
+Route::get('/contact_us', function () {
+    return view('contact_us');
+})->name('contact_us');
