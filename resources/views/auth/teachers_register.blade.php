@@ -72,7 +72,7 @@
                         <select required
                                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="occupation" name="occupation">
-                            <option value="">Select your occupation</option>
+                            <option value="" hidden>Select your occupation</option>
                             <option value="doctor">Doctor</option>
                             <option value="engineer">Engineer</option>
                             <option value="teacher">Teacher</option>
@@ -108,7 +108,7 @@
                         <select required
                                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="occupation" name="occupation">
-                            <option value="">Select a subject</option>
+                            <option value="" hidden>Select a subject</option>
                             <option value="english">English</option>
                             <option value="math">Math</option>
                             <option value="science">Science</option>
