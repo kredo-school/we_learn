@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     // .sass('resources/sass/app.scss', 'public/css', [ require('tailwindcss') ])
     .js('resources/js/modal.js', 'public/js')
     .js('resources/js/comment.js', 'public/js')
+    .js('resources/js/ticket.js', 'public/js')
     .sourceMaps();
 
 mix.webpackConfig({
