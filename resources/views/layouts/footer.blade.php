@@ -11,13 +11,13 @@
       <a href="{{ 'faq' }}" class="mx-4 text-black hover:text-[#ED4C59]">FAQ</a>
       <a href="{{ 'contact_us' }}" class="mx-4 text-black hover:text-[#ED4C59]">CONTACT US</a>
       <a href="https://twitter.com" class="mx-4">
-        <img src="assets/images/Twitter.png" alt="Twitter" class="h-6 w-6">
+        <img src="../assets/images/Twitter.png" alt="Twitter" class="h-6 w-6">
       </a>
       <a href="https://instagram.com" class="mx-4">
-        <img src="assets/images/Instagram.png" alt="Instagram" class="h-6 w-6">
+        <img src="../assets/images/Instagram.png" alt="Instagram" class="h-6 w-6">
       </a>
       <a href="https://facebook.com" class="mx-4">
-        <img src="assets/images/Facebook.png" alt="Facebook" class="h-6 w-6">
+        <img src="../assets/images/Facebook.png" alt="Facebook" class="h-6 w-6">
       </a>
     </div>
   </footer>

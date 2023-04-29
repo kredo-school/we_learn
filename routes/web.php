@@ -86,7 +86,55 @@ Route::get('/exchanges-login', function () {
     return view('auth.exchanges_login');
 })->name('exchanges_login');
 
-// Contact us
-Route::get('/contact_us', function () {
-    return view('contact_us');
-})->name('contact_us');
+//route for homepages
+Route::get('/learner/home', function () {
+    return view('home.home_learner');
+})->name('home_learner');
+
+Route::get('/teacher/home', function () {
+    return view('home.home_teacher');
+})->name('home_teacher');
+
+Route::get('/exchange/home', function () {
+    return view('home.home_exchange');
+})->name('home_exchange');
+
+// route for click yes when buy ticket
+Route::get('/ticket/yes', function () {
+    return view('home.click_yes');
+})->name('ticket_yes');
+
+// route for payment page
+Route::get('/ticket/payment', function () {
+    return view('home.payment');
+})->name('payment');
+
+// route for teacher list
+Route::get('/list/teacher', function () {
+    return view('home.teacher_list');
+})->name('list');
+
+// route for lesson schedule for learner
+Route::get('/schedule/learner', function () {
+    return view('home.lesson_schedule_learner');
+})->name('schedule_learner');
+
+// route for chat of learner
+Route::get('/chat/learner', function () {
+    return view('home.chat_for_learner');
+})->name('chat_learner');
+
+// route for after clicking view button page
+Route::get('/view/teacherprofile', function () {
+    return view('home.click_view');
+})->name('click_view');
+
+// exchange category chat after clicking view button
+Route::get('/chat/exchange', function () {
+    return view('home.exchange_category_chat');
+})->name('chat_exchange');
+
+// edit available day and time for teacher homepage
+Route::get('/edit/available', function () {
+    return view('home.edit_available_for_teacher');
+})->name('edit_available');
