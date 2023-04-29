@@ -88,7 +88,7 @@
                         5:00 PM
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
+                        <a href="{{ route('edit_available') }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
                             <img src="../assets/images/Pencil.png" alt="edit" class="h-5 w-5">
                         </a>
                     </td>

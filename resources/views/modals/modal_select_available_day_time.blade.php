@@ -48,7 +48,7 @@
                     {{--  search  --}}
                     <div class="flex items-center justify-center mt-8">
                         <button type="submit"
-                            class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md flex items-center">
+                            class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md flex items-center">
                             Available
                             <img src="../assets/images/click.png" alt="point" class="h-5 w-5 ml-2">
                         </button>

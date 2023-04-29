@@ -62,12 +62,13 @@
                                             </a>
                                         </div>
 
-                                        <div class="flex justify-end items-end w-[50%] pt-8">
+                                        <div data-modal-target="click-request" data-modal-toggle="click-request" class="flex justify-end items-end w-[50%] pt-8">
                                             <button onclick="location.href='{{ url('#') }}'"
                                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                                 Request
                                             </button>
                                         </div>
+                                        @include('modals.modal_request')
                                     </div>
                                 </div>
                                 {{-- Name of teacher's  --}}

@@ -121,3 +121,7 @@ Route::get('/chat/exchange', function () {
     return view('home.exchange_category_chat');
 })->name('chat_exchange');
 
+// edit available day and time for teacher homepage
+Route::get('/edit/available', function () {
+    return view('home.edit_available_for_teacher');
+})->name('edit_available');
