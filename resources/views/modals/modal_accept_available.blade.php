@@ -20,7 +20,7 @@
                         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h3 class="mb-5 text-lg font-bold text-gray-500 dark:text-gray-400">Are you sure to <span
-                        class="text-red-400">delete</span> this lesson?</h3>
+                        class="text-red-400">accept</span> this lesson?</h3>
 
                 {{--  schedule  --}}
                 <div class="flex justify-center my-5">

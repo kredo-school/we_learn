@@ -36,7 +36,7 @@
                         </div>
                         {{-- button --}}
                         <div class="flex items-end justify-end w-full py-10">
-                            <button onclick="location.href='{{ url('#') }}'"
+                            <button onclick="location.href='{{ route('edit_profile.exchanges') }}'"
                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 EDIT
                             </button>

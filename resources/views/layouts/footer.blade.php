@@ -3,7 +3,7 @@
   <footer class="flex items-center justify-center bg-white text-white p-6">
     <div class="flex items-center mr-6">
       <a href="{{ url('/') }}">
-        <img src="assets/images/logo.png" alt="Logo" class="h-16 w-16">
+        <img src="../assets/images/logo.png" alt="Logo" class="h-16 w-16">
       </a>
     </div>
     <div class="flex justify-center items-center">

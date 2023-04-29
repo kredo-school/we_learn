@@ -36,7 +36,7 @@
                         </div>
                         {{-- button --}}
                         <div class="flex items-end justify-end w-full py-10">
-                            <button onclick="location.href='{{ url('#') }}'"
+                            <button onclick="location.href='{{ route('edit_profile.learners') }}'"
                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 EDIT
                             </button>
@@ -95,7 +95,7 @@
                             <div class="w-full lg:w-9/12 px-4">
 
                                 <a href="#ticket page" class="font-normal text-[#ED4C59]"><i
-                                        class="fa-solid fa-ticket"></i> 3 Available</a>
+                                        class="fa-solid fa-ticket"></i> <span class="text-3xl mx-3">3</span>  Available</a>
                             </div>
                         </div>
                     </div>

@@ -138,3 +138,8 @@ Route::get('/chat/exchange', function () {
 Route::get('/edit/available', function () {
     return view('home.edit_available_for_teacher');
 })->name('edit_available');
+
+// Contact us
+Route::get('/contact_us', function () {
+    return view('contact_us');
+})->name('contact_us');

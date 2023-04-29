@@ -6,7 +6,7 @@
     </div>
     <div class="flex items-center">
       {{-- Home button--}}
-      <a href="{{ route('home_exchange') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
+      <a href="{{ route('home_teacher') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-2 md:mr-6">
         <img src="../assets/images/round-home.png" alt="round-home"  class="h-8 w-8">
       </a>
 
@@ -20,7 +20,7 @@
           </div>
 
         <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-          <a href="{{ route('exchanges') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+          <a href="{{ route('teachers') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
             <img src="../assets/images/user-circle.png" alt="User-pic" class="w-4 h-4 object-contain mr-2" />
             <span class="text-sm text-black">Profile</span>
           </a>
