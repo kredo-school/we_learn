@@ -7,9 +7,9 @@
       </a>
     </div>
     <div class="flex justify-center items-center">
-      <a href="{{ url('/') }}" class="mx-4 text-black">TOP</a>
-      <a href="{{ 'faq' }}" class="mx-4 text-black">FAQ</a>
-      <a href="/" class="mx-4 text-black">CONTACT US</a>
+      <a href="{{ url('/') }}" class="mx-4 text-black hover:text-[#ED4C59]">TOP</a>
+      <a href="{{ 'faq' }}" class="mx-4 text-black hover:text-[#ED4C59]">FAQ</a>
+      <a href="{{ 'contact_us' }}" class="mx-4 text-black hover:text-[#ED4C59]">CONTACT US</a>
       <a href="https://twitter.com" class="mx-4">
         <img src="../assets/images/Twitter.png" alt="Twitter" class="h-6 w-6">
       </a>
