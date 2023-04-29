@@ -56,17 +56,18 @@
 
                             <select id="countries"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Choose Category</option>
-                                <option value>Programing</option>
-                                <option value>Option 2</option>
-                                <option value>Option 3</option>
+                                <option value="" hidden>Select category</option>
+                                <option value="programing">Programing</option>
+                                <option value="english">English</option>
+                                <option value="something">something</option>
+                                <option value="anything">anything</option>
                             </select>
 
                         </div>
 
                         <div class="my-10">
                             <a href="{{ route('home_exchange') }}"
-                                class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
+                                class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
                                 Let’s check it up!
                             </a>
                         </div>

@@ -11,8 +11,8 @@
             {{--  button for search teacher  --}}
             <div data-modal-target="search-teacher" data-modal-toggle="search-teacher" class="h-[250px] w-[250px] rounded-lg bg-white group">
                 <div class="h-full w-full flex flex-col justify-center items-center hover:bg-[#000000]/70">
-                    <p class="text-3xl text-[#000000] ml-5 group-hover:text-[#FFFFFF] hover:shadow-lg">Search</p>
-                    <p class="text-3xl text-[#000000] ml-5 group-hover:text-[#FFFFFF] hover:shadow-lg">Teacher</p>
+                    <p class="py-3 text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">Search</p>
+                    <p class="text-3xl text-[#000000] group-hover:text-[#FFFFFF] hover:shadow-lg">Teacher</p>
                 </div>
             </div>
             @include('modals.modal_search_teacher')

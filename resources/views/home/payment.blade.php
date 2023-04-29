@@ -7,7 +7,7 @@
 <div class="h-screen w-screen bg-[url('../assets/images/money.jpg')] bg-center bg-no-repeat">
 
     <div class="flex items-center justify-center h-screen">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[1000px]">
+        <form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px]">
             <div class="text-center text-3xl font-bold mb-5">Payment</div>
             <div class="grid grid-cols-2 gap-4">
 

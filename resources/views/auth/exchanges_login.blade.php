@@ -28,7 +28,6 @@
             <div class="flex flex-col items-center justify-center">
                 <button type="submit" class="flex items-center bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">
                   <span class="inline-block align-middle">Login</span>
-                  <img src="assets/images/logout2.png" alt="login" class="w-5 h-5 object-contain align-middle ml-2" style="filter: brightness(0%) invert(1);">
                 </button>
                 <div class="mt-6">
                     <a href="#" class="text-sm text-black hover:text-[#ED4C59] text-center">
