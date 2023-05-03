@@ -24,10 +24,10 @@ class CreateTeachersTable extends Migration
             $table->string('subject', 255);
             $table->string('occupation', 255);
             $table->string('language', 255);
-            $table->longtext('about');
+            $table->longtext('about')->nullable();
             $table->string('profile_img', 255)->nullable();
-            $table->string('learning_mode', 255);
-            $table->string('location',255);
+            $table->string('learning_mode', 255)->nullable();
+            $table->string('location',255)->nullable();
         });
     }
 
