@@ -16,5 +16,19 @@ class Learner extends Model
     {
         return $this->hasMany('App\Message');
     }
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'age',
+        'gender',
+        'residence',
+    ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
 }
 

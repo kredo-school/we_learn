@@ -143,3 +143,7 @@ Route::get('/edit/available', function () {
 Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
+
+//LeanerregisterController
+Route::get('/register/learner', [App\Http\Controllers\LearnerController::class, 'index'])->name('learner.register');
+Route::post('/register/learner', [App\Http\Controllers\LearnerController::class, 'register'])->name('learner.register.submit');
