@@ -15,10 +15,13 @@
                         <label class="block text-gray-700 font-bold mb-2" for="name">
                             Name
                         </label>
-                        <input required
-                            name="name"
+                        <input
+                            name="name" value="{{ old('name') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="name" type="text" placeholder="Enter your name">
+                            @error('name')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  email  --}}
@@ -26,10 +29,13 @@
                         <label class="block text-gray-700 font-bold mb-2" for="email">
                             Email Address
                         </label>
-                        <input required
-                            name="email"
+                        <input
+                            name="email" value="{{ old('email') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="email" type="email" placeholder="Enter your email address">
+                            @error('email')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  password  --}}
@@ -37,9 +43,12 @@
                         <label class="block text-gray-700 font-bold mb-2" for="password">
                             Password
                         </label>
-                        <input required name="password" minlength="8"
+                        <input name="password" value="{{ old('password') }}" minlength="8"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="password" type="password" placeholder="Enter your password">
+                            @error('password')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  age  --}}
@@ -47,10 +56,13 @@
                         <label class="block text-gray-700 font-bold mb-2" for="age">
                             Age
                         </label>
-                        <input required
-                            name="age"
+                        <input
+                            name="age" value="{{ old('age') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="age" type="number" placeholder="Enter your age">
+                            @error('age')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  gender radio button  --}}
@@ -58,14 +70,17 @@
                         <label class="block text-gray-700 font-bold mb-2" for="gender">
                             Gender
                         </label>
-                        <input required type="radio"
+                        <input  type="radio" @if(old('gender') == 'male') checked @endif
                                 class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                value="male" checked>
+                                value="male">
                             <span class="ml-2 text-gray-700">Male</span>
-                            <input required type="radio"
+                            <input  type="radio" @if(old('gender') == 'female') checked @endif
                                 class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
                                 value="female">
                             <span class="ml-2 text-gray-700">Female</span>
+                            @error('gender')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  occupation select form --}}
@@ -73,27 +88,33 @@
                         <label class="block text-gray-700 font-bold mb-2" for="occupation">
                             Occupation
                         </label>
-                        <select required
+                        <select
                                 name="occupation"
                                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="occupation" name="occupation">
                             <option value="" hidden>Select your occupation</option>
-                            <option value="doctor">Doctor</option>
-                            <option value="engineer">Engineer</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="student">Student</option>
+                            <option value="doctor" @if(old('occupation') == 'doctor') selected @endif>Doctor</option>
+                            <option value="engineer" @if(old('occupation') == 'engineer') selected @endif>Engineer</option>
+                            <option value="teacher" @if(old('occupation') == 'teacher') selected @endif>Teacher</option>
+                            <option value="student" @if(old('occupation') == 'student') selected @endif>Student</option>
                         </select>
+                        @error('occupation')
+                             <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     {{--  residence  --}}
                     <div>
-                        <label class="block text-gray-700 font-bold mb-2" for="residense">
-                            Residense
+                        <label class="block text-gray-700 font-bold mb-2" for="residence">
+                            Residence
                         </label>
-                        <input required
-                            name="residence"
+                        <input
+                            name="residence" value="{{ old('residence') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="register" type="text" placeholder="Enter your registration details">
+                            id="residence" type="text" placeholder="Enter your registration details">
+                            @error('residence')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  language  --}}
@@ -101,10 +122,13 @@
                         <label class="block text-gray-700 font-bold mb-2" for="language">
                             Language
                         </label>
-                        <input required
-                            name="language"
+                        <input
+                            name="language" value="{{ old('language') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="register" type="text" placeholder="Which language do you speak?">
+                            @error('language')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     {{--  subject slect form  --}}
@@ -112,16 +136,19 @@
                         <label class="block text-gray-700 font-bold mb-2" for="subject">
                             Subject
                         </label>
-                        <select required
+                        <select
                                 name="subject"
                                 class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="occupation" name="occupation">
                             <option value="" hidden>Select a subject</option>
-                            <option value="english">English</option>
-                            <option value="math">Math</option>
-                            <option value="science">Science</option>
-                            <option value="social studies">Social Studies</option>
+                            <option value="english" @if(old('subject') == 'english') selected @endif>English</option>
+                            <option value="math" @if(old('subject') == 'math') selected @endif>Math</option>
+                            <option value="science" @if(old('subject') == 'science') selected @endif>Science</option>
+                            <option value="social studies" @if(old('subject') == 'social studies') selected @endif>Social Studies</option>
                         </select>
+                            @error('subject')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
                     </div>
                 </div>
 

@@ -27,8 +27,7 @@ class Teacher extends Model
         'occupation',
         'residence',
         'language',
-        'subject',
-
+        'subject'
     ];
 
     protected $hidden = [

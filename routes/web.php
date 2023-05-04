@@ -145,5 +145,5 @@ Route::get('/contact_us', function () {
 })->name('contact_us');
 
 // TeacherRegisterController
-Route::get('/register/teacher', [App\Http\Controllers\TeacherRegisterController::class, 'index'])->name('teacher.register');
-Route::post('/register/teacher', [App\Http\Controllers\TeacherRegisterController::class, 'register'])->name('teacher.register.submit');
+Route::get('/register/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('teacher.register');
+Route::post('/register/teacher', [App\Http\Controllers\TeacherController::class, 'register'])->name('teacher.register.submit');
