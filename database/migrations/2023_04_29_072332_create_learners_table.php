@@ -21,10 +21,10 @@ class CreateLearnersTable extends Migration
             $table->integer('age');
             $table->string('residence', 255);
             $table->enum('gender', ['male', 'female']);
-            $table->longtext('about');
+            $table->longtext('about')->nullable();
             $table->string('profile_img', 255)->nullable();
-            $table->string('language', 255);
-            $table->integer('ticket');
+            $table->string('language', 255)->nullable();
+            $table->integer('ticket')->nullable();
             $table->timestamps();
         });
     }
