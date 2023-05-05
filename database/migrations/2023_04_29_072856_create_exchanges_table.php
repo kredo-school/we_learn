@@ -24,7 +24,7 @@ class CreateExchangesTable extends Migration
             $table->string('occupation', 255);
             $table->string('category', 255);
             $table->string('profile_img', 255)->nullable();
-            $table->longtext('about');
+            $table->longtext('about')->nullable();;
         });
     }
 
