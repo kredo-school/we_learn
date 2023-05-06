@@ -138,3 +138,9 @@ Route::post('/register/learner', [App\Http\Controllers\LearnerController::class,
 // ExchangeRegisterController
 Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
 Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
+
+//Learner login
+Route::get('/login/learner', [App\Http\Controllers\LearnerController::class, 'authenticate'])->name('learner.login');
+
+
+

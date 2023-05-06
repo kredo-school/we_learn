@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Learner;
+use Illuminate\Support\Facades\Auth;
 
 class LearnerController extends Controller
 {
@@ -32,6 +33,21 @@ class LearnerController extends Controller
 
         // Redirect the user to the login page or wherever you want to redirect them after registration
         return redirect()->route('learner.register');
-
     }
+
+    public function authenticate(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        // Authentication passed...
+        return redirect()->intended('home_learner');
+    } else {
+        return redirect()->back()->withErrors([
+            'message' => 'Invalid credentials',
+        ]);
+    }
+}
+
+    
 }
