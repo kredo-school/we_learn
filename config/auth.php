@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'learners',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'learners',
         ],
+
+        'teachers' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -63,6 +73,11 @@ return [
         'learners' => [
             'driver' => 'eloquent',
             'model' => App\Models\Learner::class,
+        ],
+
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
         ],
     ],
 

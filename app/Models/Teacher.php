@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Teacher extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Teacher extends Authenticatable
 {
     public $timestamps = false;
+    protected $table = 'teachers';
     public function reservations()
     {
         return $this->hasMany('App\Reservation');

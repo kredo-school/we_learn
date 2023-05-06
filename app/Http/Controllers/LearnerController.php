@@ -30,8 +30,12 @@ class LearnerController extends Controller
             'gender' => 'required|in:male,female',
         ]);
 
+        $validatedData["password"] = bcrypt($validatedData["password"]);
+
         // Create a new user instance
         $learner = new Learner($validatedData);
+
+
 
         // Save the new user to the database
         $learner->save();
@@ -41,9 +45,13 @@ class LearnerController extends Controller
     }
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-     
-        if (Auth::attempt($credentials)) {
+        $request->validate([
+            'email' => 'required|string|email|max:255|unique:learners',
+            'password' => 'required|string|min:8',
+        ]);
+        if (Auth::guard('learners')->attempt(['email' => $request->email, 'password' => $request->password]))
+
+        {
             // Authentication passed...
             return redirect()->route('home_learner');
         } else {
