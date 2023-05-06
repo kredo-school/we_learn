@@ -5,7 +5,8 @@
 @section('contents')
 <div class="h-screen w-screen bg-[url('/assets/images/learner-login.jpg')] bg-cover bg-center bg-no-repeat">
     <div class="max-w-md mx-auto flex items-center justify-center h-screen">
-        <form action="{{ route('learner.login') }}" method="get" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]">
+        <form action="{{ route('learner.login.store') }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]">
+            @csrf
             <div class="text-center text-3xl font-bold mb-5">Learner's Login</div>
 
             {{--  email  --}}

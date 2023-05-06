@@ -60,10 +60,6 @@ Route::get('/editprofile/exchanges', function () {
     return view('edit_profile.exchanges');
 })->name('edit_profile.exchanges');
 
-// Login
-Route::get('/learners-login', function () {
-    return view('auth.learners_login');
-})->name('learners_login');
 
 Route::get('/teachers-login', function () {
     return view('auth.teachers_login');
@@ -140,7 +136,9 @@ Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class
 Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
 
 //Learner login
-Route::get('/login/learner', [App\Http\Controllers\LearnerController::class, 'authenticate'])->name('learner.login');
+Route::get('/login/learner', [App\Http\Controllers\LearnerController::class, 'login'])->name('learners_login');
+Route::post('/login/learner/store', [App\Http\Controllers\LearnerController::class, 'authenticate'])->name('learner.login.store');
+
 
 
 

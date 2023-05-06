@@ -62,14 +62,26 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Learner::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        // 'learners' => [
+        //     'driver' => 'eloquent',
+        //     'model' =>  App\Models\Learner::class,
         // ],
+
+        // 'learners' => [
+
+        //     'redirectTo' => 'home.home_learner',
+
+        //     'driver' => 'session',
+
+        //     'provider' => 'learners',
+
+        //     ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
