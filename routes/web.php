@@ -143,3 +143,8 @@ Route::get('/edit/available', function () {
 Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
+
+
+// ExchangeRegisterController
+Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
+Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
