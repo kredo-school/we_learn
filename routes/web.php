@@ -131,6 +131,10 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
+// TeacherRegisterController
+Route::get('/register/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('teacher.register');
+Route::post('/register/teacher', [App\Http\Controllers\TeacherController::class, 'register'])->name('teacher.register.submit');
+
 //LeanerregisterController
 Route::get('/register/learner', [App\Http\Controllers\LearnerController::class, 'index'])->name('learners_register');
 Route::post('/register/learner', [App\Http\Controllers\LearnerController::class, 'register'])->name('learner.register.submit');
