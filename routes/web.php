@@ -21,19 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-Route::group(['middleware' => 'auth'], function () {
-
-    // Route::get('/settings', function () {
-    //     return view('auth.settings');
-    // })->name('settings');
-});
-//Registration
-Route::get('/learners-register', function () {
-    return view('auth.learners_register');
-})->name('learners_register');
-
 Route::get('/exchanges-register', function () {
     return view('auth.exchanges_register');
 })->name('exchanges_register');
@@ -144,6 +131,9 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
+//LeanerregisterController
+Route::get('/register/learner', [App\Http\Controllers\LearnerController::class, 'index'])->name('learners_register');
+Route::post('/register/learner', [App\Http\Controllers\LearnerController::class, 'register'])->name('learner.register.submit');
 
 // ExchangeRegisterController
 Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
