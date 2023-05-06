@@ -134,3 +134,7 @@ Route::get('/contact_us', function () {
 //LeanerregisterController
 Route::get('/register/learner', [App\Http\Controllers\LearnerController::class, 'index'])->name('learners_register');
 Route::post('/register/learner', [App\Http\Controllers\LearnerController::class, 'register'])->name('learner.register.submit');
+
+// ExchangeRegisterController
+Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
+Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
