@@ -14,7 +14,7 @@
                 <label class="block text-gray-700 font-bold mb-2" for="email">
                 Email Address
                 </label>
-                <input required class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email address" name="email"
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email address" name="email"
                 value="{{ old('email') }}">
                 @error('email')
                     <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -26,7 +26,7 @@
                 <label class="block text-gray-700 font-bold mb-2" for="password">
                 Password
                 </label>
-                <input required minlength="8" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" name="password"
+                <input minlength="8" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" name="password"
                 value="{{ old('password') }}">
                 @error('password')
                     <div class="text-red-500 text-xs">{{ $message }}</div>

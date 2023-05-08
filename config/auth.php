@@ -41,6 +41,11 @@ return [
             'provider' => 'learners',
         ],
 
+        'teachers' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+
         'exchanges' => [
             'driver' => 'session',
             'provider' => 'exchanges',
@@ -50,7 +55,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
     ],
 
     /*
@@ -76,6 +80,10 @@ return [
             'model' => App\Models\Learner::class,
         ],
 
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ],
         'exchanges' => [
             'driver' => 'eloquent',
             'model' => App\Models\Exchange::class,
