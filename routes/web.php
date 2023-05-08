@@ -139,7 +139,7 @@ Route::post('/register/learner', [App\Http\Controllers\LearnerController::class,
 Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
 Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
 
-//Learner login
+//Learner Login
 Route::get('/login/learner', [App\Http\Controllers\LearnerController::class, 'login'])->name('learners_login');
 Route::post('/login/learner/store', [App\Http\Controllers\LearnerController::class, 'authenticate'])->name('learner.login.store');
 
@@ -147,6 +147,9 @@ Route::post('/login/learner/store', [App\Http\Controllers\LearnerController::cla
 Route::get('/login/teacher', [App\Http\Controllers\TeacherController::class, 'login'])->name('teachers_login');
 Route::post('/login/teacher/store', [App\Http\Controllers\TeacherController::class, 'authenticate'])->name('teacher.login.store');
 
+//Exchange Login
+Route::get('/login/exchange', [App\Http\Controllers\ExchangeController::class, 'login'])->name('exchanges_login');
+Route::post('/login/exchange/store', [App\Http\Controllers\ExchangeController::class, 'authenticate'])->name('exchange.login.store');
 
 
 

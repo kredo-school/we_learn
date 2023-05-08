@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Exchange extends Model
+class Exchange extends Authenticatable
 {
     public $timestamps = false;
+
+    protected $table = 'exchanges';
     public function exchangeSkills()
     {
         return $this->hasMany('App\ExchangeSkill');
