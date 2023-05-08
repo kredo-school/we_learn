@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'learners',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -40,6 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'learners',
         ],
+
+        'exchanges' => [
+            'driver' => 'session',
+            'provider' => 'exchanges',
+        ],
+
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
     ],
 
     /*
@@ -64,9 +75,13 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Learner::class,
         ],
+
+        'exchanges' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Exchange::class,
+        ],
+
     ],
-
-
 
     /*
     |--------------------------------------------------------------------------
