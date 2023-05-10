@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+    'teachers' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Teacher::class,
     ],
 
     /*
@@ -51,10 +51,6 @@ return [
             'provider' => 'exchanges',
         ],
 
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
     ],
 
     /*
@@ -107,7 +103,19 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'learners' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ],
+
+        'exchanges' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

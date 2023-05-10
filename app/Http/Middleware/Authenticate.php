@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
+use function PHPUnit\Framework\returnSelf;
+
 class Authenticate extends Middleware
 {
     /**
@@ -14,8 +16,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        if (! $request->expectsJson())
+        {
+            if ($request->routeIs('teacher.*'))
+                return route('teacher.login'); // Teacher
+            else if ($request->routeIs('learner.*'))
+                return route('learner.login'); // Learner
+            else
+                return route('exchange.login'); // Exchange
         }
     }
 }
