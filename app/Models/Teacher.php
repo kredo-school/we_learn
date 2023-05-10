@@ -9,6 +9,8 @@ class Teacher extends Authenticatable
 {
     public $timestamps = false;
     protected $table = 'teachers';
+    protected $guard = 'teachers';
+
     public function reservations()
     {
         return $this->hasMany('App\Reservation');

@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/exchanges-register', function () {
+Route::get('/exchanges-r{{ egis }}ter', function () {
     return view('auth.exchanges_register');
 })->name('exchanges_register');
 
@@ -38,11 +38,6 @@ Route::get('/faq', function () {
 Route::get('/learners', function () {
     return view('profile.learners');
 })->name('learners');
-
-Route::get('/teachers', function () {
-    return view('profile.teachers');
-})->name('teachers');
-
 Route::get('/exchanges', function () {
     return view('profile.exchanges');
 })->name('exchanges');
@@ -127,29 +122,20 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
-// TeacherRegisterController
-Route::get('/register/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('teacher.register');
-Route::post('/register/teacher', [App\Http\Controllers\TeacherController::class, 'register'])->name('teacher.register.submit');
+// Teacher Group
+Route::prefix('teacher')->name('teacher.')->group(function()
+{
+    Route::middleware(['guest:teachers'])->group(function()
+    {
+        Route::view('/login', 'auth.teachers_login')->name('login');
+        Route::view('/register', 'auth.teachers_register')->name('register');
+        Route::post('/login', [App\Http\Controllers\TeacherController::class, 'login'])->name('login');
 
-//LeanerregisterController
-Route::get('/register/learner', [App\Http\Controllers\LearnerController::class, 'index'])->name('learners_register');
-Route::post('/register/learner', [App\Http\Controllers\LearnerController::class, 'register'])->name('learner.register.submit');
+    });
 
-// ExchangeRegisterController
-Route::get('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'index'])->name('exchanges_register');
-Route::post('/register/exchange', [App\Http\Controllers\ExchangeController::class, 'register'])->name('exchange.register.submit');
+    Route::middleware(['auth:teachers'])->group(function(){
+        Route::view('/home', 'home.home_teacher')->name('home');
 
-//Learner Login
-Route::get('/login/learner', [App\Http\Controllers\LearnerController::class, 'login'])->name('learners_login');
-Route::post('/login/learner/store', [App\Http\Controllers\LearnerController::class, 'authenticate'])->name('learner.login.store');
-
-//teacher login
-Route::get('/login/teacher', [App\Http\Controllers\TeacherController::class, 'login'])->name('teachers_login');
-Route::post('/login/teacher/store', [App\Http\Controllers\TeacherController::class, 'authenticate'])->name('teacher.login.store');
-
-//Exchange Login
-Route::get('/login/exchange', [App\Http\Controllers\ExchangeController::class, 'login'])->name('exchanges_login');
-Route::post('/login/exchange/store', [App\Http\Controllers\ExchangeController::class, 'authenticate'])->name('exchange.login.store');
-
-
+    });
+});
 
