@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/exchanges-r{{ egis }}ter', function () {
+Route::get('/exchanges-register', function () {
     return view('auth.exchanges_register');
 })->name('exchanges_register');
 
@@ -135,6 +135,23 @@ Route::prefix('teacher')->name('teacher.')->group(function()
 
     Route::middleware(['auth:teachers'])->group(function(){
         Route::view('/home', 'home.home_teacher')->name('home');
+
+    });
+});
+
+// Exchange Group
+Route::prefix('exchange')->name('exchange.')->group(function()
+{
+    Route::middleware(['guest:exchanges'])->group(function()
+    {
+        Route::view('/login', 'auth.exchanges_login')->name('login');
+        Route::view('/register', 'auth.exchanges_register')->name('register');
+        Route::post('/login', [App\Http\Controllers\ExchangeController::class, 'login'])->name('login');
+        Route::post('/register', [App\Http\Controllers\ExchangeController::class, 'register'])->name('register');
+    });
+
+    Route::middleware(['auth:exchanges'])->group(function(){
+        Route::view('/home', 'home.home_exchange')->name('home');
 
     });
 });
