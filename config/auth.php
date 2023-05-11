@@ -18,6 +18,11 @@ return [
         'model' => App\Models\Teacher::class,
     ],
 
+    'learners' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Learner::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -104,10 +109,8 @@ return [
 
     'passwords' => [
         'learners' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'driver' => 'eloquent',
+            'model' => App\Models\Learner::class,
         ],
 
         'teachers' => [
