@@ -18,6 +18,11 @@ return [
         'model' => App\Models\Teacher::class,
     ],
 
+    'exchanges' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Exchange::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -116,10 +121,8 @@ return [
         ],
 
         'exchanges' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'driver' => 'eloquent',
+            'model' => App\Models\Exchange::class,
         ],
     ],
 

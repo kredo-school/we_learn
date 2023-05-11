@@ -16,7 +16,7 @@
           <a href="{{ route('teacher.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Teacher
           </a>
-          <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <a href="{{ route('exchange.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Exchange
           </a>
         </div>
@@ -32,7 +32,7 @@
           <a href="{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Teacher
           </a>
-          <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <a href="{{ route('exchange.register') }}class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Exchange
           </a>
         </div>

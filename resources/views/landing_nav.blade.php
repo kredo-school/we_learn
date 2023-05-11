@@ -10,13 +10,13 @@
         Login
       </button>
       <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-        <a href="{{ route('learners_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Learner
         </a>
-        <a href="{{ route('teachers_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('teacher.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Teacher
         </a>
-        <a href="{{ route('exchanges_login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('exchange.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Exchange
         </a>
       </div>
@@ -26,13 +26,13 @@
         Register
       </button>
       <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-        <a href="{{ route('learners_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Learner
         </a>
-        <a href="{{ route('teachers_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Teacher
         </a>
-        <a href="{{ route('exchanges_register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+        <a href="{{ route('exchange.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
           Exchange
         </a>
       </div>

@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="my-10">
-                            <a href="{{ route('home_exchange') }}"
+                            <a href="{{ route('exchange.home') }}"
                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
                                 Let’s check it up!
                             </a>
