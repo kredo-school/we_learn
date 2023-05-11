@@ -5,7 +5,7 @@
 @section('contents')
     <div class="h-screen w-screen bg-[url('/assets/images/register-modified.jpg')] bg-cover bg-center bg-no-repeat">
         <div class="max-w-md mx-auto flex items-center justify-center h-screen">
-            <form action="{{ route('learner.register.submit') }}" method="post"
+            <form action="{{ route('learner.register') }}" method="post"
                 class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]">
                 @csrf
                 <div class="text-center text-3xl font-bold mb-5">Learner's Register</div>

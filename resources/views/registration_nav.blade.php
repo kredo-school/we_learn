@@ -10,7 +10,7 @@
           Login
         </button>
         <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-          <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <a href="{{ route('learner.login') }}"  class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Learner
           </a>
           <a href="{{ route('teacher.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
@@ -26,7 +26,7 @@
           Register
         </button>
         <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-          <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <a href="{{ route('learner.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Learner
           </a>
           <a href="{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
