@@ -22,6 +22,10 @@ return [
         'driver' => 'eloquent',
         'model' => App\Models\Exchange::class,
     ],
+    'learners' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Learner::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -109,10 +113,8 @@ return [
 
     'passwords' => [
         'learners' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'driver' => 'eloquent',
+            'model' => App\Models\Learner::class,
         ],
 
         'teachers' => [

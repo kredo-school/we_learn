@@ -29,6 +29,11 @@ class TeacherController extends Controller
 
         $teacher->save();
 
+        $creds = $request->only('email','password');
+
+        if (Auth::guard('teachers')->attempt($creds))
+            return redirect()->route('teacher.home');
+
     }
 
     public function login(Request $request)

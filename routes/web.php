@@ -122,7 +122,7 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
-// Teacher Group
+// Teacher Group for login
 Route::prefix('teacher')->name('teacher.')->group(function()
 {
     Route::middleware(['guest:teachers'])->group(function()
@@ -130,7 +130,7 @@ Route::prefix('teacher')->name('teacher.')->group(function()
         Route::view('/login', 'auth.teachers_login')->name('login');
         Route::view('/register', 'auth.teachers_register')->name('register');
         Route::post('/login', [App\Http\Controllers\TeacherController::class, 'login'])->name('login');
-
+        Route::post('/register', [App\Http\Controllers\TeacherController::class, 'register'])->name('register');
     });
 
     Route::middleware(['auth:teachers'])->group(function(){
@@ -156,3 +156,19 @@ Route::prefix('exchange')->name('exchange.')->group(function()
     });
 });
 
+// Learner Group for login
+Route::prefix('learner')->name('learner.')->group(function()
+{
+    Route::middleware(['guest:learners'])->group(function()
+    {
+        Route::view('/login', 'auth.learners_login')->name('login');
+        Route::view('/register', 'auth.learners_register')->name('register');
+        Route::post('/login', [App\Http\Controllers\learnerController::class, 'login'])->name('login');
+        Route::post('/register', [App\Http\Controllers\learnerController::class, 'register'])->name('register');
+    });
+
+    Route::middleware(['auth:learners'])->group(function(){
+        Route::view('/home', 'home.home_learner')->name('home');
+
+    });
+});
