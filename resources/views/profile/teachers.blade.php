@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('after_login_nav')
+@include('after_teacher_nav')
 
 <main class="profile-page">
     <section class="relative block h-500-px">
@@ -51,8 +51,8 @@
                         {{-- Address --}}
                         <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                             <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                            Regidence/Country :
-                            <span class="mb-2 text-blueGray-600">{{ $teacher->email }}</span>
+                            Residence/Country :
+                            <span class="mb-2 text-blueGray-600">{{ $teacher->residence }}</span>
                         </div>
                         {{-- Age --}}
                         <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">

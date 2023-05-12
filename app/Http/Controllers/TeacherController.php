@@ -56,14 +56,9 @@ class TeacherController extends Controller
     public function show($id)
     {
         $teacher = Teacher::find($id);
-
-        return view('teacher.show', ['teacher' => $teacher]);
+        return view('profile.teachers', ['teacher' => $teacher]);
     }
-    public function show($id)
-    {
-        $teacher = Teacher::find($id);
 
-        return view('teacher.show', ['teacher' => $teacher]);
-    }
+
 }
 

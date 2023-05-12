@@ -16,7 +16,7 @@
             <button class="text-sm text-black hover:text-[#ED4C59] px-4 py-2">
               <img src="../assets/images/user-circle.png" alt="User-pic" class="w-7 h-7 object-contain" />
             </button>
-            <span class="text-sm text-black mr-6 hover:text-[#ED4C59] px-4 py-2">Hello Jennie</span>
+            <span class="text-sm text-black mr-6 hover:text-[#ED4C59] px-4 py-2">{{ $teacher->name }}</span>
           </div>
 
         <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">

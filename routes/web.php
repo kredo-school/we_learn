@@ -174,4 +174,7 @@ Route::prefix('learner')->name('learner.')->group(function()
 
 });
 
-//Teacher profile
+//Show teacher profile
+Route::get('/teachers/{id}', [App\Http\Controllers\TeacherController::class, 'show'])->name('teacher.show');
+
+
