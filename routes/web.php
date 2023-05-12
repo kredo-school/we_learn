@@ -171,6 +171,7 @@ Route::prefix('learner')->name('learner.')->group(function()
         Route::view('/home', 'home.home_learner')->name('home');
 
     });
+
 });
 
 //Teacher profile

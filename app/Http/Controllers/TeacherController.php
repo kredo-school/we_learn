@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class TeacherController extends Controller
 {
     public function register(Request $request)
@@ -51,6 +52,12 @@ class TeacherController extends Controller
             return redirect()->route('teacher.home');
         else
             return redirect()->route('teacher.login')->with('fail','Incorrect credentioals');
+    }
+    public function show($id)
+    {
+        $teacher = Teacher::find($id);
+
+        return view('teacher.show', ['teacher' => $teacher]);
     }
     public function show($id)
     {
