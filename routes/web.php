@@ -172,3 +172,5 @@ Route::prefix('learner')->name('learner.')->group(function()
 
     });
 });
+
+//Teacher profile
