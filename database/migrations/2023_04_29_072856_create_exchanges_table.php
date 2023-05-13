@@ -23,7 +23,7 @@ class CreateExchangesTable extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->string('occupation', 255);
             $table->string('category', 255);
-            $table->string('profile_img', 255)->nullable();
+            $table->longtext('profile_img')->nullable();
             $table->longtext('about')->nullable();;
         });
     }

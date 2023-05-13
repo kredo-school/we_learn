@@ -30,12 +30,16 @@ class Teacher extends Authenticatable
         'occupation',
         'residence',
         'language',
-        'subject'
+        'subject',
+        'learning_mode',
+        'about',
+        'profile_img'
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
 }
 
