@@ -5,11 +5,10 @@
 <main class="profile-page">
     <section class="relative block h-500-px">
         {{-- background-image --}}
-        <div class="absolute top-0 w-full h-full bg-center bg-cover"
-            style="
-            background-image: url('/assets/images/pexels-andrea-piacquadio-3781789.jpg');
-          ">
-            <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+        <div class="absolute top-0 w-full h-full bg-center bg-cover">
+        <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+        <img src="{{($teacher->profile_img != null) ? $teacher->profile_img : url('/assets/images/insert-photo.jpg')}}"
+        alt="profile" class="object-cover w-full h-full"/>
         </div>
         <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
             style="transform: translateZ(0px)">
@@ -28,16 +27,13 @@
                     <div class="flex flex-wrap justify-center">
                         <div class="w-full flex justify-center">
                             <div class="relative flex justify-center items-center w-full">
-
-                                <div
-                                    class="bg-[url('/assets/images/pexels-andrea-piacquadio-3781789.jpg')] shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 bg-center bg-cover bg-no-repeat">
-                                </div>
-
+                                <img src="{{($teacher->profile_img != null) ? $teacher->profile_img : url('/assets/images/insert-photo.jpg')}}"
+                                alt="profile" height="150px" width="150px" class="shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 object-cover"/>
                             </div>
                         </div>
                         {{-- button --}}
                         <div class="flex items-end justify-end w-full py-10">
-                            <button onclick="location.href='{{ route('edit_profile.teachers') }}'"
+                            <button onclick="location.href='{{ route('teacher.edit.profile', ['id' => $teacher->id])}}'"
                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 EDIT
                             </button>

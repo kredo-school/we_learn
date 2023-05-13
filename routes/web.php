@@ -134,8 +134,10 @@ Route::prefix('teacher')->name('teacher.')->group(function()
     });
 
     Route::middleware(['auth:teachers'])->group(function(){
-        Route::view('/home', 'home.home_teacher')->name('home');
-
+        Route::get('/home', [App\Http\Controllers\TeacherController::class, 'home'])->name('home');
+        Route::get('profile/{id}', [App\Http\Controllers\TeacherController::class, 'showProfile'])->name('show.profile');
+        Route::get('edit-profile/{id}', [App\Http\Controllers\TeacherController::class, 'editProfile'])->name('edit.profile');
+        Route::post('edit-profile/{id}', [App\Http\Controllers\TeacherController::class, 'editProfileSubmit'])->name('edit.submit');
     });
 });
 
@@ -174,7 +176,8 @@ Route::prefix('learner')->name('learner.')->group(function()
 
 });
 
-//Show teacher profile
-Route::get('/teachers/{id}', [App\Http\Controllers\TeacherController::class, 'show'])->name('teacher.show');
+
+
+
 
 

@@ -25,7 +25,7 @@ class CreateTeachersTable extends Migration
             $table->string('occupation', 255);
             $table->string('language', 255);
             $table->longtext('about')->nullable();
-            $table->string('profile_img', 255)->nullable();
+            $table->longtext('profile_img')->nullable();
             $table->string('learning_mode', 255)->nullable();
             $table->string('location',255)->nullable();
         });
