@@ -11,6 +11,8 @@ class Exchange extends Authenticatable
     public $timestamps = false;
 
     protected $table = 'exchanges';
+
+    protected $guard = 'exchanges';
     public function exchangeSkills()
     {
         return $this->hasMany('App\ExchangeSkill');
@@ -30,6 +32,8 @@ class Exchange extends Authenticatable
         'occupation',
         'residence',
         'category',
+        'profile_img',
+        'about',
     ];
 
     protected $hidden = [
