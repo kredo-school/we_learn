@@ -9,6 +9,8 @@ class Learner extends Authenticatable
 {
     public $timestamps = false;
     protected $table = 'learners';
+    protected $guard = 'learners';
+
     public function reservations()
     {
         return $this->hasMany('App\Reservation');
@@ -26,6 +28,8 @@ class Learner extends Authenticatable
         'age',
         'gender',
         'residence',
+        'language',
+        'about',
     ];
     protected $hidden = [
         'password',
