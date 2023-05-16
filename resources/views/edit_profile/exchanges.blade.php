@@ -1,162 +1,146 @@
 @extends('layouts.app')
 
-@include('registration_nav')
-
 @section('contents')
+
+ @include('after_login_nav')
     <div class="bg-[url('/assets/images/sakura.jpg')] bg-cover bg-center bg-no-repeat">
         <div class="flex items-center justify-center">
-            <form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px] mt-4">
+            <form method="post" action="{{ route('exchange.edit.submit', ['id' => $exchange->id]) }}" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px] mt-4" enctype="multipart/form-data">
+                @csrf
                 <div class="text-center text-3xl font-bold mb-5">Edit Profile</div>
                 <div class="grid grid-cols-2 gap-4">
 
-                        {{--  name  --}}
+                    {{--  name  --}}
                     <div class="mb-4">
                         <label class="block text-gray-700 font-bold mb-2" for="name">
                             Name
                         </label>
-                        <input required
+                        <input
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="name" type="text" placeholder="Angelina Jolie">
+                            id="name" type="text" name="name" value="{{ $exchange->name }}">
                     </div>
 
                     {{-- change profile photo --}}
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="profile_picture">
-                            Profile Picture
+                        <label class="block text-gray-700 font-bold mb-2" for="profile_img">
+                            Profile img
                         </label>
                         <div class="flex items-center">
-                            <img src="../assets/images/user-circle.png" alt="User-pic" class="w-10 h-10 object-contain" />
-                            <input class="hidden" id="profile_picture" name="profile_picture" type="file" accept="image/*" required>
-                            <label for="profile_picture" class="cursor-pointer appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <img src="/assets/images/user-circle.png" alt="User-pic" class="w-10 h-10 object-contain" />
+                            <input class="hidden" id="profile_img" name="profile_img" type="file"
+                                accept="image/*" >
+                            <label for="profile_img"
+                                class="cursor-pointer appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <span id="image_label">Choose image</span>
                             </label>
                         </div>
                     </div>
-                        {{--  email  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="email">
-                                Email Address
-                            </label>
-                            <input required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="email" type="email" placeholder="Email address">
-                        </div>
 
-                        {{--  age  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="age">
-                                Age
-                            </label>
-                            <input required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="age" type="number" placeholder="Enter your age">
-                        </div>
+                    {{--  email  --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="email">
+                            Email Address
+                        </label>
+                        <input required
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="email" type="email" name="email" value="{{ $exchange->email }}">
+                    </div>
 
-                        {{--  occupation  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="occupation">
-                                Occupation
-                            </label>
-                            <input required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="occupation" type="text" placeholder="What is your occupation">
-                        </div>
+                    {{--  age  --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="age">
+                            Age
+                        </label>
+                        <input
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="age" type="number" name="age" value="{{ $exchange->age }}">
+                    </div>
 
-                        {{--  residense  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="residense">
-                                Residense
-                            </label>
-                            <input required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="regsidense" type="text" placeholder="New York">
-                        </div>
+                   {{--  occupation  --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="occupation">
+                            Occupation
+                        </label>
+                        <select name="occupation"
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="occupation" name="occupation">
+                            <option value="" hidden>Select your occupation</option>
+                            <option value="doctor" {{ $exchange->occupation == 'doctor' ? 'selected' : '' }}>Doctor
+                            </option>
+                            <option value="engineer" {{ $exchange->occupation == 'engineer' ? 'selected' : '' }}>Engineer
+                            </option>
+                            <option value="teacher" {{ $exchange->occupation == 'teacher' ? 'selected' : '' }}>Teacher
+                            </option>
+                            <option value="student" {{ $exchange->occupation == 'student' ? 'selected' : '' }}>Student
+                            </option>
+                        </select>
+                    </div>
 
-                        {{--  category select form  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="category">
-                                Category
-                            </label>
-                            <select required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="category" name="category">
-                                <option value="" hidden>Select category</option>
-                                <option value="programing">Programing</option>
-                                <option value="english">English</option>
-                                <option value="something">something</option>
-                                <option value="anything">anything</option>
-                            </select>
-                        </div>
+                    {{--  residense  --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="residence">
+                            Residence
+                        </label>
+                        <input
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="regsidence" type="text" name="residence" value="{{ $exchange->residence }}">
+                    </div>
 
-                        {{--  Language  --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="language">
-                                Language
-                            </label>
-                            <select required
-                                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="language" name="language">
-                                <option value="" hidden>Select your language</option>
-                                <option value="programing">English</option>
-                                <option value="english">Japanese</option>
-                                <option value="something">Chinese</option>
-                                <option value="anything">Spanish</option>
-                            </select>
-                        </div>
+                    {{--  category select form  --}}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="category">
+                            Category
+                        </label>
+                        <select
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="category" name="category">
+                            <option value="" hidden>Select your category</option>
+                            <option value="programming" {{ $exchange->category == 'programming' ? 'selected' : '' }}>Programming
+                            </option>
+                            <option value="english" {{ $exchange->category == 'english' ? 'selected' : '' }}>English
+                            </option>
+                            <option value="something" {{ $exchange->category == 'something' ? 'selected' : '' }}>Something
+                            </option>
+                            <option value="anything" {{ $exchange->category == 'anything' ? 'selected' : '' }}>Anything
+                            </option>
+                        </select>
+                    </div>
 
-                        {{--  gender radio button  --}}
-                        <div class="mb-4 flex items-center mt-4">
-                            <label class="block text-gray-700 font-bold mr-4" for="gender">
-                                Gender
-                            </label>
-                            <div class="flex items-center">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                    value="male" checked>
-                                <span class="ml-2 text-gray-700">Male</span>
-                            </div>
-                            <div class="flex items-center ml-4">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                    value="female">
-                                <span class="ml-2 text-gray-700">Female</span>
-                            </div>
+                    {{--  gender radio button  --}}
+                    <div class="mb-4 flex items-center mt-4">
+                        <label class="block text-gray-700 font-bold mr-4" for="gender">
+                            Gender
+                        </label>
+                        <div class="flex items-center">
+                            <input type="radio"
+                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                                value="male" {{ $exchange->gender == 'male' ? 'checked' : '' }}>
+                            <span class="ml-2 text-gray-700">Male</span>
                         </div>
-
-                        {{-- Online/Offline --}}
-                        <div class="mb-4 flex items-center mt-4">
-                            <label class="block text-gray-700 font-bold mr-4" for="online">
-                                Online or Offline
-                            </label>
-                            <div class="flex items-center">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="online"
-                                    value="online" checked>
-                                <span class="ml-2 text-gray-700">Online</span>
-                            </div>
-                            <div class="flex items-center ml-4">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="online"
-                                    value="offline">
-                                <span class="ml-2 text-gray-700">Offline</span>
-                            </div>
+                        <div class="flex items-center ml-4">
+                            <input type="radio"
+                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                                value="female" {{ $exchange->gender == 'female' ? 'checked' : '' }}>
+                            <span class="ml-2 text-gray-700">Female</span>
                         </div>
                     </div>
 
-                        {{-- About me --}}
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="aboutme">
-                                About me
-                            </label>
-                            <textarea class="resize-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" placeholder="Hello.I would love to teach you about programing."></textarea>
-                        </div>
+                </div>
+
+                {{-- About me --}}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="aboutme">
+                        About me
+                    </label>
+                    <textarea
+                        class="resize-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        rows="5" name="about"> {{ $exchange->about == null ? '' : $exchange->about }}</textarea>
+                </div>
 
                 {{--  Update Button  --}}
                 <div class="flex items-center justify-center">
-                    <button type="submit"
-                        class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-8 mt-8">
-                        Update Profile
-                    </button>
+                    <input type="submit"
+                        class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-8 mt-8" value="Update Profile">
                 </div>
 
                 {{--  current password --}}
@@ -164,7 +148,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="password">
                         Password
                     </label>
-                    <input required minlength="8"
+                    <input  minlength="8"
                         class="appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="password" type="password" placeholder="Current your password...At least 8 characters">
                 </div>
@@ -174,7 +158,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="newpassword">
                         New Password
                     </label>
-                    <input required minlength="8"
+                    <input  minlength="8"
                         class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="newpassword" type="password" placeholder="New password... At least 8 characters">
                 </div>
@@ -184,7 +168,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="password">
                         Confirm Password
                     </label>
-                    <input required minlength="8"
+                    <input  minlength="8"
                         class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                         id="confirmpassword" type="password" placeholder="New password... At least 8 characters">
                 </div>

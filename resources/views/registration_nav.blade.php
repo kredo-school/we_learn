@@ -1,7 +1,7 @@
 <nav class="flex items-center justify-between flex-wrap bg-white">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <a href="{{ url('/') }}">
-        <img src="../assets/images/logo.png" alt="Logo" class="h-[60px] w-[60px] ml-">
+        <img src="/assets/images/logo.png" alt="Logo" class="h-[60px] w-[60px] ml-">
       </a>
     </div>
     <div class="flex items-center ml-auto">
@@ -32,7 +32,7 @@
           <a href="{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Teacher
           </a>
-          <a href="{{ route('exchange.register') }}class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <a href="{{ route('exchange.register') }}"class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
             Exchange
           </a>
         </div>

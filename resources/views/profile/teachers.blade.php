@@ -44,7 +44,7 @@
                         <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                             {{ $teacher->name }}
                         </h3>
-                        {{-- Address --}}
+                        {{-- Residence --}}
                         <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                             <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                             Residence/Country :
