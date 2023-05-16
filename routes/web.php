@@ -34,13 +34,10 @@ Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
 
-// PROFILE
-// Route::get('/learners', function () {
-//     return view('profile.learners');
-// })->name('learners');
-// Route::get('/exchanges', function () {
-//     return view('profile.exchanges');
-// })->name('exchanges');
+
+Route::get('/exchanges', function () {
+    return view('profile.exchanges');
+})->name('exchanges');
 
 // EDIT PROFILE
 Route::get('/editprofile/learners', function () {
@@ -174,6 +171,9 @@ Route::prefix('learner')->name('learner.')->group(function()
 
     Route::middleware(['auth:learners'])->group(function(){
         Route::view('/home', 'home.home_learner')->name('home');
+        Route::get('profile/{id}', [App\Http\Controllers\LearnerController::class, 'showProfile'])->name('show.profile');
+        Route::get('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfile'])->name('edit.profile');
+        Route::post('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfileSubmit'])->name('edit.submit');
 
     });
 

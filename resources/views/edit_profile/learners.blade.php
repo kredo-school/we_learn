@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
-@include('registration_nav')
+@include('after_learners_nav')
 
 @section('contents')
     <div class="bg-[url('/assets/images/sakura.jpg')] bg-cover bg-center bg-no-repeat">
         <div class="flex items-center justify-center">
-            <form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px] mt-4">
+            <form method="post" action="{{ route('learner.edit.submit', ['id' => $learner->id]) }}" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px] mt-4" enctype="multipart/form-data">
+                @csrf
                 <div class="text-center text-3xl font-bold mb-5">Edit Profile</div>
                 <div class="grid grid-cols-2 gap-4">
 
@@ -14,20 +15,20 @@
                         <label class="block text-gray-700 font-bold mb-2" for="name">
                             Name
                         </label>
-                        <input required
+                        <input
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="name" type="text" placeholder="Angelina Jolie">
+                            id="name" type="text" name="name" value="{{ $learner->name }}">
                     </div>
 
                     {{-- change profile photo --}}
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="profile_picture">
+                        <label class="block text-gray-700 font-bold mb-2" for="profile_img">
                             Profile Picture
                         </label>
                         <div class="flex items-center">
-                            <img src="../assets/images/user-circle.png" alt="User-pic" class="w-10 h-10 object-contain" />
-                            <input class="hidden" id="profile_picture" name="profile_picture" type="file" accept="image/*" required>
-                            <label for="profile_picture" class="cursor-pointer appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <img src="/assets/images/user-circle.png" alt="User-pic" class="w-10 h-10 object-contain" />
+                            <input class="hidden" id="profile_img" name="profile_img" type="file" accept="image/*">
+                            <label for="profile_img"                            class="cursor-pointer appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <span id="image_label">Choose image</span>
                             </label>
                         </div>
@@ -38,9 +39,9 @@
                         <label class="block text-gray-700 font-bold mb-2" for="email">
                             Email Address
                         </label>
-                        <input required
+                        <input
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="email" type="email" placeholder="Email address">
+                            id="email" type="email" name="email" value="{{ $learner->email }}">
                     </div>
 
                     {{--  age  --}}
@@ -48,29 +49,19 @@
                         <label class="block text-gray-700 font-bold mb-2" for="age">
                             Age
                         </label>
-                        <input required
+                        <input
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="age" type="number" placeholder="Enter your age">
-                    </div>
-
-                    {{--  occupation  --}}
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="occupation">
-                            Occupation
-                        </label>
-                        <input required
-                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="occupation" type="text" placeholder="What is your occupation">
+                            id="age" type="number" name="age" value="{{ $learner->age }}">
                     </div>
 
                     {{--  residense  --}}
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="residense">
-                            Residense
+                        <label class="block text-gray-700 font-bold mb-2" for="residence">
+                            Residence
                         </label>
-                        <input required
+                        <input
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="regsidense" type="text" placeholder="New York">
+                            id="regsidense" type="text" name="residence" value="{{ $learner->residence }}">
                     </div>
 
                     {{--  Language  --}}
@@ -78,15 +69,9 @@
                         <label class="block text-gray-700 font-bold mb-2" for="language">
                             Language
                         </label>
-                        <select required
+                        <input name="language" value="{{ $learner->language }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="language" name="language">
-                            <option value="" hidden>Select your language</option>
-                            <option value="programing">English</option>
-                            <option value="english">Japanese</option>
-                            <option value="something">Chinese</option>
-                            <option value="anything">Spanish</option>
-                        </select>
+                            id="register" type="text" placeholder="Which language do you speak?">
                     </div>
                 </div>
 
@@ -97,40 +82,19 @@
                                 Gender
                             </label>
                             <div class="flex items-center">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
-                                    name="gender" value="male" checked>
+                                <input type="radio"
+                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                                    value="male" {{ $learner->gender == 'male' ? 'checked' : '' }}>
                                 <span class="ml-2 text-gray-700">Male</span>
                             </div>
                             <div class="flex items-center ml-4">
-                                <input required type="radio"
+                                <input type="radio"
                                     class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
-                                    name="gender" value="female">
+                                    name="gender" value="female" {{ $learner->gender == 'female' ? 'checked' : '' }}>
                                 <span class="ml-2 text-gray-700">Female</span>
                             </div>
                         </div>
-
-                        {{-- Online/Offline --}}
-                        <div class="mb-4 flex items-center mt-4">
-                            <label class="block text-gray-700 font-bold mr-4" for="online">
-                                Online or Offline
-                            </label>
-                            <div class="flex items-center">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
-                                    name="online" value="online" checked>
-                                <span class="ml-2 text-gray-700">Online</span>
-                            </div>
-                            <div class="flex items-center ml-4">
-                                <input required type="radio"
-                                    class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
-                                    name="online" value="offline">
-                                <span class="ml-2 text-gray-700">Offline</span>
-                            </div>
-                        </div>
                     </div>
-
-
 
                 {{-- About me --}}
                 <div class="mb-4">
@@ -139,7 +103,7 @@
                     </label>
                     <textarea
                         class="resize-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        rows="5" placeholder="Hello.I would love to teach you about programing."></textarea>
+                        rows="5" name="about"> {{ $learner->about == null ? '' : $learner->about }} </textarea>
                 </div>
 
                 {{--  Update Button  --}}
@@ -155,7 +119,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="password">
                         Password
                     </label>
-                    <input required minlength="8"
+                    <input minlength="8"
                         class="appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="password" type="password" placeholder="Current your password...At least 8 characters">
                 </div>
@@ -165,7 +129,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="newpassword">
                         New Password
                     </label>
-                    <input required minlength="8"
+                    <input minlength="8"
                         class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="newpassword" type="password" placeholder="New password... At least 8 characters">
                 </div>
@@ -175,7 +139,7 @@
                     <label class="block text-gray-700 font-bold mb-2" for="password">
                         Confirm Password
                     </label>
-                    <input required minlength="8"
+                    <input minlength="8"
                         class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                         id="confirmpassword" type="password" placeholder="New password... At least 8 characters">
                 </div>

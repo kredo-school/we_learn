@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Models\Learner;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class LearnerController extends Controller
 {
+    private $learner;
+
+    public function __construct(Learner $learner)
+    {
+        $this->learner = $learner;
+    }
+
     public function register(Request $request)
     {
         // Validate the incoming request data
@@ -45,9 +54,56 @@ class LearnerController extends Controller
         $creds = $request->only('email','password');
 
         if (Auth::guard('learners')->attempt($creds))
-            return redirect()->route('learner.home');
+        {
+            $learner = Learner::find(Auth::guard('learners')->id());
+            return view('home.home_learner', ['learner' => $learner]);
+        }
         else
             return redirect()->route('learner.login')->with('fail','Incorrect credentioals');
+    }
+
+    public function showProfile($id)
+    {
+        $learner = Learner::find($id);
+        return view('profile.learners', ['learner' => $learner]);
+    }
+
+    public function editProfile($id)
+    {
+        $learner = Learner::find($id);
+        return view('edit_profile.learners', ['learner' => $learner]);
+    }
+
+    public function editProfileSubmit(Request $request, $id)
+    {
+        $learner = Learner::findOrFail($id);
+
+        if ($request->hasFile('profile_img'))
+        {
+            $path = $request->file('profile_img')->getRealPath();
+            $img = file_get_contents($path);
+            $base64 = base64_encode($img);
+            $image = 'data:' . $request->file('profile_img')->getMimeType() . ';base64,' . $base64;
+            $learner->profile_img = $image;
+        }
+
+        $learner->name = $request->input('name');
+        $learner->email = $request->input('email');
+        $learner->age = $request->input('age');
+        $learner->gender = $request->input('gender');
+        $learner->residence = $request->input('residence');
+        $learner->language = $request->input('language');
+        $learner->about = $request->input('about');
+
+        $learner->update();
+
+        return redirect()->route('learner.show.profile', ['id' => $learner->id]);
+    }
+
+    public function home()
+    {
+        $learner = Learner::find(Auth::guard('learners')->id());
+        return view('home.home_learner', ['leaner' => $learner]);
     }
 }
 
