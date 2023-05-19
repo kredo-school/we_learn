@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            {{--  button  --}}
+            {{-- Available button for Modal --}}
             <div data-modal-target="select-available" data-modal-toggle="select-available"
                 class="flex justify-center w-screen my-10">
                 <a href="#"
@@ -86,39 +86,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    21/03/2023
-                                </th>
-                                <td class="px-6 py-4">
-                                    5:00 PM
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="{{ route('edit_available') }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
-                                        <img src="../assets/images/Pencil.png" alt="edit" class="h-5 w-5">
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div data-modal-target="delete-available" data-modal-toggle="delete-available">
-                                        <a href="#"
+                            @foreach ($reservations as $reservation)
+                                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $reservation->date }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ \Carbon\Carbon::parse($reservation->time)->format('h:i A') }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{{ route('teacher.edit_schedule', ['teacher' => $teacher->id, 'reservation' => $reservation->id]) }}"
                                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
-                                            <img src="../assets/images/Recycle_bin.png" alt="delete" class="h-5 w-5">
+                                            <img src="/assets/images/Pencil.png" alt="edit" class="h-5 w-5">
                                         </a>
-                                    </div>
-                                    @include('modals.modal_delete_available')
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div data-modal-target="accept-available" data-modal-toggle="accept-available">
-                                        <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
-                                            <img src="../assets/images/Accept.png" alt="accept" class="h-5 w-5">
-                                        </a>
-                                        @include('modals.modal_accept_available')
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div data-modal-target="delete-available" data-modal-toggle="delete-available">
+                                            <a href="#"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
+                                                <img src="/assets/images/Recycle_bin.png" alt="delete" class="h-5 w-5">
+                                            </a>
+                                        </div>
+                                        @include('modals.modal_delete_available')
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div data-modal-target="accept-available" data-modal-toggle="accept-available">
+                                            <a href="#"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
+                                                <img src="../assets/images/Accept.png" alt="accept" class="h-5 w-5">
+                                            </a>
+                                            @include('modals.modal_accept_available')
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

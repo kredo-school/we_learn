@@ -12,28 +12,21 @@ class CreateReservationsTable extends Migration
      * @return void
      */
     public function up()
+    {
+        Schema::create('reservations', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('teacher_id');
+            $table->unsignedBigInteger('learner_id')->nullable();
+            $table->date('date');
+            $table->string('time');
+            $table->boolean('reserved')->default(false);
+            $table->timestamps();
 
-{
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreign('learner_id')->references('id')->on('learners')->onDelete('cascade');
 
-  Schema::create('reservations', function (Blueprint $table) {
-
-    $table->id();
-
-    $table->integer('teacher_id');
-
-    $table->integer('learner_id');
-
-    $table->date('date');
-
-    $table->time('time');
-
-    $table->boolean('reserved')->default(false);
-
-    $table->timestamps();
-
-  });
-
-}
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -45,3 +38,4 @@ class CreateReservationsTable extends Migration
         Schema::dropIfExists('reservations');
     }
 }
+
