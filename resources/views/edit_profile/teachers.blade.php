@@ -5,7 +5,7 @@
 @section('contents')
     <div class="bg-[url('/assets/images/sakura.jpg')] bg-cover bg-center bg-no-repeat">
         <div class="flex items-center justify-center">
-            <form method="post" action="{{ route('teacher.edit.submit', ['id' => $teacher->id]) }}"
+            <form method="post" action="{{ route('teacher.edit.submit', ['teacher' => $teacher->id]) }}"
                 class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px] mt-4" enctype="multipart/form-data">
                 @csrf
                 <div class="text-center text-3xl font-bold mb-5">Edit Profile</div>

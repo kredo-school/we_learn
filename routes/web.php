@@ -109,11 +109,6 @@ Route::get('/chat/exchange', function () {
     return view('home.exchange_category_chat');
 })->name('chat_exchange');
 
-// edit available day and time for teacher homepage
-Route::get('/edit/available', function () {
-    return view('home.edit_available_for_teacher');
-})->name('edit_available');
-
 // Contact us
 Route::get('/contact_us', function () {
     return view('contact_us');
@@ -132,11 +127,16 @@ Route::prefix('teacher')->name('teacher.')->group(function()
 
     Route::middleware(['auth:teachers'])->group(function(){
         Route::get('/home', [App\Http\Controllers\TeacherController::class, 'home'])->name('home');
-        Route::get('profile/{id}', [App\Http\Controllers\TeacherController::class, 'showProfile'])->name('show.profile');
-        Route::get('edit-profile/{id}', [App\Http\Controllers\TeacherController::class, 'editProfile'])->name('edit.profile');
-        Route::post('edit-profile/{id}', [App\Http\Controllers\TeacherController::class, 'editProfileSubmit'])->name('edit.submit');
+        Route::get('/{teacher}/profile', [App\Http\Controllers\TeacherController::class, 'showProfile'])->name('show.profile');
+        Route::get('/{teacher}/edit-profile', [App\Http\Controllers\TeacherController::class, 'editProfile'])->name('edit.profile');
+        Route::post('/{teacher}/edit-profile', [App\Http\Controllers\TeacherController::class, 'editProfileSubmit'])->name('edit.submit');
+        Route::post('/home', [App\Http\Controllers\TeacherController::class, 'schedule'])->name('process.date.time');
+        Route::get('/{teacher}/edit-schedule/{reservation}',[App\Http\Controllers\TeacherController::class, 'editSchedule'])->name('edit_schedule');
+        Route::post('/{teacher}/edit-schedule/{reservation}',[App\Http\Controllers\TeacherController::class, 'updateSchedle'])->name('updateSchedle');
+        Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
     });
 });
+
 
 // Exchange Group
 Route::prefix('exchange')->name('exchange.')->group(function()

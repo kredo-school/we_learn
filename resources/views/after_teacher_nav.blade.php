@@ -1,3 +1,4 @@
+
 <nav class="flex items-center justify-between flex-wrap bg-white">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
         <a href="{{ url('/') }}">
@@ -21,7 +22,7 @@
           </div>
 
         <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-          <a href="{{ route('teacher.show.profile', ['id' => $teacher->id]) }}
+          <a href="{{ route('teacher.show.profile', ['teacher' => $teacher->id]) }}
             " class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
             <img src="{{ ($teacher->profile_img != null) ? $teacher->profile_img : '/assets/images/user-circle.png' }}" alt="User-pic"
               class="w-4 h-4 object-cover rounded-full" />

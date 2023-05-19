@@ -10,17 +10,10 @@ class Teacher extends Authenticatable
     public $timestamps = false;
     protected $table = 'teachers';
     protected $guard = 'teachers';
-
-    public function reservations()
-    {
-        return $this->hasMany('App\Reservation');
-    }
-
-    public function messages()
-    {
-        return $this->hasMany('App\Message');
-    }
-
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
     protected $fillable = [
         'name',
         'email',
@@ -35,11 +28,15 @@ class Teacher extends Authenticatable
         'about',
         'profile_img'
     ];
+    public function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation');
+    }
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
 
 }
 
