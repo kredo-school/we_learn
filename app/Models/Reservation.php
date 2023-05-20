@@ -26,5 +26,6 @@ class Reservation extends Model
         'time',
         'reserved',
         'teacher_id',
+        'learner_id',
     ];
 }

@@ -48,32 +48,33 @@
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="/assets/images/user-circle.png"
-                                        alt="image">
+                                    <!-- profile img -->
+                                    <img src="{{($teacher->profile_img != null) ? $teacher->profile_img : url('/assets/images/insert-photo.jpg')}}"
+                                alt="profile" class="rounded-full h-10 w-10"/>
                                     <div class="pl-3">
-                                        <div class="text-base font-semibold">Neil Sims</div>
+                                        <div class="text-base font-semibold">{{ $teacher->name }}</div>
                                     </div>
                                 </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    English
+                                    {{ $teacher->subject }}
                                 </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    21/03/2023
+                                    {{ $reservation->date }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    5:00 PM
+                                    {{ $reservation->time }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Online
+                                    {{ $teacher->learning_mode }}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 {{--  button for yes  --}}
-                <a href="#">
+                <a href="{{ route('learner.request.lesson', ['reservation' => $reservation->id, 'learner' => $learner->id]) }}">
                     <button data-modal-hide="click-request" type="button"
                         class="text-white bg-[#F6A5B3] hover:bg-[#ED4C59] focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Request</button>
                 </a>

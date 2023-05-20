@@ -29,8 +29,9 @@
                     </div>
                     <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
                         style="transform: translateZ(0px)">
-                        <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-                            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                        <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0"
+                            y="0">
                             <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
                         </svg>
                     </div>
@@ -39,7 +40,8 @@
 
                     {{-- profile picture --}}
                     <div class="container mx-auto px-4">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+                        <div
+                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
                             <div class="px-6">
                                 <div class="flex flex-wrap justify-center">
                                     <div class="w-full flex justify-center">
@@ -54,7 +56,7 @@
                                     {{-- button --}}
                                     <div class="flex flex-row w-full">
                                         <div class="flex justify-start items-start w-[50%] pt-8">
-                                            <a href="{{ route('chat_learner') }}">
+                                            <a href="{{ route('learner.chat_learner') }}">
                                                 <button onclick="location.href='{{ url('#') }}'"
                                                     class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                                     Send Message
@@ -62,7 +64,8 @@
                                             </a>
                                         </div>
 
-                                        <div data-modal-target="click-request" data-modal-toggle="click-request" class="flex justify-end items-end w-[50%] pt-8">
+                                        <div data-modal-target="click-request" data-modal-toggle="click-request"
+                                            class="flex justify-end items-end w-[50%] pt-8">
                                             <button onclick="location.href='{{ url('#') }}'"
                                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                                 Request
@@ -74,66 +77,66 @@
                                 {{-- Name of teacher's  --}}
                                 <div class="text-center flex flex-col justify-center items-center mt-10">
                                     <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                                        Jennie Wilson
+                                        {{ $teacher->name }}
                                     </h3>
                                     {{-- Address --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                                         Regidence/Country :
-                                        <span class="mb-2 text-blueGray-600">Los Angeles, California</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->residence }}</span>
                                     </div>
                                     {{-- Age --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-hourglass-half mr-2 text-lg text-blueGray-400"></i>
                                         Age :
-                                        <span class="mb-2 text-blueGray-600">19</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->age }}</span>
                                     </div>
                                     {{-- Gender --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-restroom mr-2 text-lg text-blueGray-400"></i>
                                         Gender :
-                                        <span class="mb-2 text-blueGray-600">Female</span>
+                                        <span class="mb-2 text-blueGray-600">{{$teacher->gender}}</span>
                                     </div>
                                     {{-- Occupation --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
                                         Occupation :
-                                        <span class="mb-2 text-blueGray-600">Solution Manager - Creative Tim Officer</span>
+                                        <span class="mb-2 text-blueGray-600">{{$teacher->occupation}}</span>
                                     </div>
                                     {{-- Language --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-microphone mr-2 text-lg text-blueGray-400"></i>
                                         Language :
-                                        <span class="mb-2 text-blueGray-600">English</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->language }}</span>
                                     </div>
                                     {{-- Subject  --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-book mr-2 text-lg text-blueGray-400"></i>
                                         Subject :
-                                        <span class="mb-2 text-blueGray-600">I'm good at Math.</span>
+                                        <span class="mb-2 text-blueGray-600">I'm good at {{ $teacher->subject }}.</span>
                                     </div>
                                     {{-- About me  --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-face-smile mr-2 text-lg text-blueGray-400"></i>
                                         About me :
-                                        <span class="mb-2 text-blueGray-600">Hello.I'm excited to meet you!</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->about }}</span>
                                     </div>
                                     {{-- Online/offline  --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold mb-6">
                                         <i class="fa-solid fa-people-arrows mr-2 text-lg text-blueGray-400"></i>
                                         Online/Offline :
-                                        <span class="mb-2 text-blueGray-600">Online</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->learning_mode }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </section>
             </main>
         </div>
     </div>
 </div>
+
 
 {{--  links  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>

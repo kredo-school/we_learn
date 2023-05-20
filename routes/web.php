@@ -94,10 +94,7 @@ Route::get('/schedule/learner', function () {
     return view('home.lesson_schedule_learner');
 })->name('schedule_learner');
 
-// route for chat of learner
-Route::get('/chat/learner', function () {
-    return view('home.chat_for_learner');
-})->name('chat_learner');
+
 
 // route for after clicking view button page
 Route::get('/view/teacherprofile', function () {
@@ -115,72 +112,62 @@ Route::get('/contact_us', function () {
 })->name('contact_us');
 
 // Teacher Group for login
-Route::prefix('teacher')->name('teacher.')->group(function()
-{
-    Route::middleware(['guest:teachers'])->group(function()
-    {
+Route::prefix('teacher')->name('teacher.')->group(function () {
+    Route::middleware(['guest:teachers'])->group(function () {
         Route::view('/login', 'auth.teachers_login')->name('login');
         Route::view('/register', 'auth.teachers_register')->name('register');
         Route::post('/login', [App\Http\Controllers\TeacherController::class, 'login'])->name('login');
         Route::post('/register', [App\Http\Controllers\TeacherController::class, 'register'])->name('register');
     });
 
-    Route::middleware(['auth:teachers'])->group(function(){
+    Route::middleware(['auth:teachers'])->group(function () {
         Route::get('/home', [App\Http\Controllers\TeacherController::class, 'home'])->name('home');
         Route::get('/{teacher}/profile', [App\Http\Controllers\TeacherController::class, 'showProfile'])->name('show.profile');
         Route::get('/{teacher}/edit-profile', [App\Http\Controllers\TeacherController::class, 'editProfile'])->name('edit.profile');
         Route::post('/{teacher}/edit-profile', [App\Http\Controllers\TeacherController::class, 'editProfileSubmit'])->name('edit.submit');
         Route::post('/home', [App\Http\Controllers\TeacherController::class, 'schedule'])->name('process.date.time');
-        Route::get('/{teacher}/edit-schedule/{reservation}',[App\Http\Controllers\TeacherController::class, 'editSchedule'])->name('edit_schedule');
-        Route::post('/{teacher}/edit-schedule/{reservation}',[App\Http\Controllers\TeacherController::class, 'updateSchedle'])->name('updateSchedle');
+        Route::get('/{teacher}/edit-schedule/{reservation}', [App\Http\Controllers\TeacherController::class, 'editSchedule'])->name('edit_schedule');
+        Route::post('/{teacher}/edit-schedule/{reservation}', [App\Http\Controllers\TeacherController::class, 'updateSchedle'])->name('updateSchedle');
         Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
     });
 });
 
 
 // Exchange Group
-Route::prefix('exchange')->name('exchange.')->group(function()
-{
-    Route::middleware(['guest:exchanges'])->group(function()
-    {
+Route::prefix('exchange')->name('exchange.')->group(function () {
+    Route::middleware(['guest:exchanges'])->group(function () {
         Route::view('/login', 'auth.exchanges_login')->name('login');
         Route::view('/register', 'auth.exchanges_register')->name('register');
         Route::post('/login', [App\Http\Controllers\ExchangeController::class, 'login'])->name('login');
         Route::post('/register', [App\Http\Controllers\ExchangeController::class, 'register'])->name('register');
     });
 
-    Route::middleware(['auth:exchanges'])->group(function(){
+    Route::middleware(['auth:exchanges'])->group(function () {
         Route::view('/home', 'home.home_exchange')->name('home');
         Route::get('profile/{id}', [App\Http\Controllers\ExchangeController::class, 'showProfile'])->name('show.profile');
         Route::get('edit-profile/{id}', [App\Http\Controllers\ExchangeController::class, 'editProfile'])->name('edit.profile');
         Route::post('edit-profile/{id}', [App\Http\Controllers\ExchangeController::class, 'editProfileSubmit'])->name('edit.submit');
-
     });
 });
 
 // Learner Group for login
-Route::prefix('learner')->name('learner.')->group(function()
-{
-    Route::middleware(['guest:learners'])->group(function()
-    {
+Route::prefix('learner')->name('learner.')->group(function () {
+    Route::middleware(['guest:learners'])->group(function () {
         Route::view('/login', 'auth.learners_login')->name('login');
         Route::view('/register', 'auth.learners_register')->name('register');
         Route::post('/login', [App\Http\Controllers\learnerController::class, 'login'])->name('login');
         Route::post('/register', [App\Http\Controllers\learnerController::class, 'register'])->name('register');
     });
 
-    Route::middleware(['auth:learners'])->group(function(){
-        Route::view('/home', 'home.home_learner')->name('home');
+    Route::middleware(['auth:learners'])->group(function () {
+        Route::get('/home', [App\Http\Controllers\LearnerController::class, 'index'])->name('home');
         Route::get('profile/{id}', [App\Http\Controllers\LearnerController::class, 'showProfile'])->name('show.profile');
         Route::get('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfile'])->name('edit.profile');
         Route::post('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfileSubmit'])->name('edit.submit');
-
+        Route::post('/search-teacher', [App\Http\Controllers\LearnerController::class, 'searchTeacher'])->name('search.teacher');
+        Route::get('/request/lesson/{reservation}/{learner}', [App\Http\Controllers\LearnerController::class, 'requestLesson'])->name('request.lesson');
+        Route::get('/chat/learner', function () {
+            return view('home.chat_for_learner');
+        })->name('chat_learner');
     });
-
 });
-
-
-
-
-
-
