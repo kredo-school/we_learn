@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Learner;
+use App\Models\Teacher;
+use App\Models\Reservation;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class LearnerController extends Controller
 {
@@ -15,6 +19,13 @@ class LearnerController extends Controller
     public function __construct(Learner $learner)
     {
         $this->learner = $learner;
+    }
+
+    public function index()
+    {
+        $learner = Learner::find(Auth::guard('learners')->id());
+
+        return view('home.home_learner', ['learner' => $learner]);
     }
 
     public function register(Request $request)
@@ -38,7 +49,7 @@ class LearnerController extends Controller
         $learner->save();
 
         // Login user
-        $creds = $request->only('email','password');
+        $creds = $request->only('email', 'password');
 
         if (Auth::guard('learners')->attempt($creds))
             return redirect()->route('learner.home');
@@ -47,19 +58,17 @@ class LearnerController extends Controller
     {
         //validate inputs
         $request->validate([
-            'email'=>'required|email|exists:learners,email',
-            'password'=>'required|min:8'
+            'email' => 'required|email|exists:learners,email',
+            'password' => 'required|min:8'
         ]);
 
-        $creds = $request->only('email','password');
+        $creds = $request->only('email', 'password');
 
-        if (Auth::guard('learners')->attempt($creds))
-        {
+        if (Auth::guard('learners')->attempt($creds)) {
             $learner = Learner::find(Auth::guard('learners')->id());
             return view('home.home_learner', ['learner' => $learner]);
-        }
-        else
-            return redirect()->route('learner.login')->with('fail','Incorrect credentioals');
+        } else
+            return redirect()->route('learner.login')->with('fail', 'Incorrect credentioals');
     }
 
     public function showProfile($id)
@@ -78,8 +87,7 @@ class LearnerController extends Controller
     {
         $learner = Learner::findOrFail($id);
 
-        if ($request->hasFile('profile_img'))
-        {
+        if ($request->hasFile('profile_img')) {
             $path = $request->file('profile_img')->getRealPath();
             $img = file_get_contents($path);
             $base64 = base64_encode($img);
@@ -105,5 +113,52 @@ class LearnerController extends Controller
         $learner = Learner::find(Auth::guard('learners')->id());
         return view('home.home_learner', ['leaner' => $learner]);
     }
-}
 
+    public function searchTeacher(Request $request)
+    {
+        $teachers = Teacher::where('learning_mode', $request->learning_mode)->where('subject', $request->subject);
+
+        if ($request->gender != 'either') {
+            $teachers = $teachers->where('gender', $request->gender);
+        }
+
+        if ($request->learning_mode == 'offline') {
+            $teachers = $teachers->where('location', 'like', "%{$request->location}%");
+        }
+
+        $all_teacher = $teachers->get();
+
+        $teachers = $all_teacher->filter(function ($teacher) use ($request) {
+            $reservations = $teacher->reservations;
+
+            return $reservations->filter(function ($reservation) use ($request) {
+                $reservationDateTime = $request->input('datetime');
+
+                // Convert the input string to a Carbon instance
+                $carbonDateTime = Carbon::createFromFormat('M j, Y h:i A', $reservationDateTime);
+
+                // Separate the date and time
+                $date = $carbonDateTime->format('Y-m-d');
+                $time = $carbonDateTime->format('h:i A');
+
+                return $reservation->date == $date && $reservation->time == $time;
+            })->first();
+        })->values();
+
+        $learner = Learner::find(Auth::guard('learners')->id());
+        $reservation = $teachers->first()->reservations->first(); // Assuming you want to pass the first reservation
+
+        return view('home.teacher_list', compact('teachers', 'learner', 'reservation'));
+    }
+
+    public function requestLesson($reservationId, Learner $learner)
+    {
+        $reservation = Reservation::findOrFail($reservationId);
+        $reservation->learner_id = $learner->id;
+        $reservation->save();
+
+        return view('home.home_learner', ['learner' => $learner]);
+
+    }
+
+}

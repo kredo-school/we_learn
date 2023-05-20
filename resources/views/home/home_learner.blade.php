@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@include('after_learners_nav')
 
 @section('contents')
+    @include('after_learners_nav')
 
-<div class="h-screen w-screen bg-[url('../assets/images/register-modified.jpg')] bg-center bg-no-repeat">
+<div class="h-screen w-screen bg-[url('/assets/images/register-modified.jpg')] bg-center bg-no-repeat bg-cover">
     <div class="h-screen flex justify-center items-center">
         <div class="flex flex-row">
 

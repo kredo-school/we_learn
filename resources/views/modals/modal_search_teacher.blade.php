@@ -19,7 +19,7 @@
 
 
             <div class="px-6 py-6 lg:px-8">
-             {{--  text  --}}
+                {{--  text  --}}
                 <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white flex justify-center">
                     What kind of teacher are you looking for?
                 </h3>
@@ -27,40 +27,42 @@
                     Please enter your requirements.
                 </h3>
 
-             {{--  date and time  --}}
-                <div x-data x-init="flatpickr($refs.datetimewidget, { wrap: true, enableTime: true, dateFormat: 'M j, Y h:i K' });" x-ref="datetimewidget"
-                    class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
-                    <label for="datetime" class="flex-grow  block text-gray-700 font-bold mb-2">Date and
-                        Time</label>
-                    <div class="flex align-middle align-content-center">
-                        <input x-ref="datetime" type="text" id="datetime" data-input placeholder="Select.."
-                            class="block w-full px-2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-l-md shadow-sm">
+                {{--  date and time  --}}
+                <form method="post" action="{{ route('learner.search.teacher') }}" class="space-y-6">
+                    <div x-data x-init="flatpickr($refs.datetimewidget, { wrap: true, enableTime: true, dateFormat: 'M j, Y h:i K' });" x-ref="datetimewidget"
+                        class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
+                        <label for="datetime" class="flex-grow  block text-gray-700 font-bold mb-2">Date and
+                            Time</label>
+                        <div class="flex align-middle align-content-center">
+                            <input x-ref="datetime" type="text" id="datetime" name="datetime" data-input
+                                placeholder="Select.."
+                                class="block w-full px-2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-l-md shadow-sm">
 
-                        <a class="h-11 w-10 input-button cursor-pointer rounded-r-md bg-transparent border-gray-300 border-t border-b border-r"
-                            title="clear" data-clear>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mt-2 ml-1" viewBox="0 0 20 20"
-                                fill="#c53030">
-                                <path fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                            <a class="h-11 w-10 input-button cursor-pointer rounded-r-md bg-transparent border-gray-300 border-t border-b border-r"
+                                title="clear" data-clear>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mt-2 ml-1" viewBox="0 0 20 20"
+                                    fill="#c53030">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-             {{--  form  --}}
-                <form class="space-y-6" action="#">
+                    {{--  form  --}}
+                    @csrf
                     {{--  online or offline  --}}
                     <div>
                         <label class="block text-gray-700 font-bold mb-2" for="onoff"></label>
                         <input required type="radio"
-                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="onoff"
-                                value="online" checked>
-                            <span class="ml-2 text-gray-700">Online</span>
-                            <input required type="radio"
-                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="onoff"
-                                value="offline">
-                            <span class="ml-2 text-gray-700">Offline</span>
+                            class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
+                            name="learning_mode" value="online" checked>
+                        <span class="ml-2 text-gray-700">Online</span>
+                        <input required type="radio"
+                            class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out"
+                            name="learning_mode" value="offline">
+                        <span class="ml-2 text-gray-700">Offline</span>
                     </div>
 
                     {{--  location  --}}
@@ -68,7 +70,7 @@
                         <label for="location" class="block text-gray-700 font-bold mb-2">Location</label>
                         <input type="text" name="location" id="location"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="Offline only" required>
+                            placeholder="Offline only">
                     </div>
 
                     {{--  subject slect form  --}}
@@ -78,7 +80,7 @@
                         </label>
                         <select required
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="occupation" name="occupation">
+                            id="occupation" name="subject">
                             <option value="" hidden>Select a subject</option>
                             <option value="english">English</option>
                             <option value="math">Math</option>
@@ -93,17 +95,17 @@
                             Teacher
                         </label>
                         <input required type="radio"
-                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                value="male" checked>
-                            <span class="ml-2 text-gray-700">Male</span>
-                            <input required type="radio"
-                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                value="female">
-                            <span class="ml-2 text-gray-700">Female</span>
-                            <input required type="radio"
-                                class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
-                                value="either">
-                            <span class="ml-2 text-gray-700">Either</span>
+                            class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                            value="male" checked>
+                        <span class="ml-2 text-gray-700">Male</span>
+                        <input required type="radio"
+                            class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                            value="female">
+                        <span class="ml-2 text-gray-700">Female</span>
+                        <input required type="radio"
+                            class="form-radio h-4 w-4 text-[#ED4C59] transition duration-150 ease-in-out" name="gender"
+                            value="either">
+                        <span class="ml-2 text-gray-700">Either</span>
                     </div>
 
                     {{--  search button  --}}
