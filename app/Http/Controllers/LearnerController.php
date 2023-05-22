@@ -131,7 +131,7 @@ class LearnerController extends Controller
         $teachers = $all_teacher->filter(function ($teacher) use ($request) {
             $reservations = $teacher->reservations;
 
-            return $reservations->filter(function ($reservation) use ($request) {
+            $reservation = $reservations->filter(function ($reservation) use ($request) {
                 $reservationDateTime = $request->input('datetime');
 
                 // Convert the input string to a Carbon instance
@@ -143,12 +143,14 @@ class LearnerController extends Controller
 
                 return $reservation->date == $date && $reservation->time == $time;
             })->first();
+
+            $teacher->reservation = $reservation;
+
+            return $reservation;
         })->values();
 
         $learner = Learner::find(Auth::guard('learners')->id());
-        $reservation = $teachers->first()->reservations->first(); // Assuming you want to pass the first reservation
-
-        return view('home.teacher_list', compact('teachers', 'learner', 'reservation'));
+        return view('home.teacher_list', compact('teachers', 'learner'));
     }
 
     public function requestLesson($reservationId, Learner $learner)

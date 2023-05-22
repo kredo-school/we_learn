@@ -129,6 +129,10 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::get('/{teacher}/edit-schedule/{reservation}', [App\Http\Controllers\TeacherController::class, 'editSchedule'])->name('edit_schedule');
         Route::post('/{teacher}/edit-schedule/{reservation}', [App\Http\Controllers\TeacherController::class, 'updateSchedle'])->name('updateSchedle');
         Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
+        Route::get('/accept', [App\Http\Controllers\TeacherController::class, 'showAcceptButton'])->name('accept');
+        Route::put('/accept/lesso/{reservation}', [App\Http\Controllers\TeacherController::class, 'acceptLesson'])->name('accept.lesson');
+
+
     });
 });
 
