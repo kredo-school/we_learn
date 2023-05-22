@@ -1,4 +1,4 @@
-<div id="click-request" tabindex="-1"
+ω<div id="click-request" tabindex="-1"
     class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-[1000px] max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -61,10 +61,10 @@
                                 </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $reservation->date }}
+                                    {{ $teacher->reservation->date }}
                                 </th>
-                                <td class="px-6 py-4">
-                                    {{ $reservation->time }}
+                                <td  class="px-6 py-4">
+                                    {{ $teacher->reservation->time }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $teacher->learning_mode }}
@@ -74,7 +74,7 @@
                     </table>
                 </div>
                 {{--  button for yes  --}}
-                <a href="{{ route('learner.request.lesson', ['reservation' => $reservation->id, 'learner' => $learner->id]) }}">
+                <a href="{{ route('learner.request.lesson', ['reservation' => $teacher->reservation->id, 'learner' => $learner->id]) }}">
                     <button data-modal-hide="click-request" type="button"
                         class="text-white bg-[#F6A5B3] hover:bg-[#ED4C59] focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Request</button>
                 </a>

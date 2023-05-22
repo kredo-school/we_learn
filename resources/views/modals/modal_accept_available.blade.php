@@ -1,4 +1,4 @@
-<div id="accept-available" tabindex="-1"
+<div id="accept-available-{{ $key }}" tabindex="-1"
     class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-[800px] max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -48,40 +48,48 @@
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="/assets/images/user-circle.png"
+                                    <img class="w-10 h-10 rounded-full"
+                                        src="{{ $teacher->profile_img != null ? $teacher->profile_img : url('/assets/images/insert-photo.jpg') }}"
                                         alt="image">
                                     <div class="pl-3">
-                                        <div class="text-base font-semibold">Neil Sims</div>
+                                        <div class="text-base font-semibold">{{ $teacher->name }}</div>
                                     </div>
                                 </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    English
+                                    {{ $teacher->subject }}
                                 </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    21/03/2023
+                                    {{ $reservation->date }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    5:00 PM
+                                    {{ $reservation->time }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Online
+                                    {{ $teacher->learning_mode }}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 {{--  button for yes  --}}
-                <a href="#">
+                <form action="{{ route('teacher.accept.lesson', ['reservation' => $reservation->id]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <a href="#">
+
+                        <button data-modal-hide="delete-available" type="submit"
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Yes</button>
+
+                    </a>
+
+
+                    {{--  button for no  --}}
                     <button data-modal-hide="delete-available" type="button"
-                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Yes</button>
-                </a>
+                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
 
-
-                {{--  button for no  --}}
-                <button data-modal-hide="delete-available" type="button"
-                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                </form>
             </div>
         </div>
     </div>
