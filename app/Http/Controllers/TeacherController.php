@@ -156,11 +156,13 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
-    public function editSchedule (Teacher $teacher, Reservation $reservation){
+    public function editSchedule(Teacher $teacher, Reservation $reservation)
+    {
         return view('home.edit_available_for_teacher', ['teacher' => $teacher, 'reservation' => $reservation]);
     }
 
-    public function updateSchedle (Request $request, Teacher $teacher, Reservation $reservation){
+    public function updateSchedle(Request $request, Teacher $teacher, Reservation $reservation)
+    {
         $reservationDateTime = $request->input('datetime');
 
         // Convert the input string to a Carbon instance
@@ -175,7 +177,6 @@ class TeacherController extends Controller
         $reservation->save();
 
         return redirect()->route('teacher.home');
-
     }
     public function deleteReservation(Reservation $reservation)
     {
@@ -184,4 +185,18 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
+    public function showAcceptButton()
+    {
+        $reservations = Reservation::where('learner_id', 1)->get();
+        return view('teacher.accept', compact('reservations'));
+    }
+
+    public function acceptLesson($reservationId)
+    {
+        $reservation = Reservation::findOrFail($reservationId);
+        $reservation->reserved = 1;
+        $reservation->save();
+
+        return redirect()->back()->with('success', 'Reservation updated successfully.');
+    }
 }
