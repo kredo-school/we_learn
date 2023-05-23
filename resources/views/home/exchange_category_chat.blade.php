@@ -3,13 +3,13 @@
 @include('after_login_nav')
 
 @section('contents')
-    <script src="{{ asset('../js/comment.js') }}"></script>
+    <script src="{{ asset('/js/comment.js') }}"></script>
     <div
-        class="h-screen w-screen bg-[url('../assets/images/bg_exchange-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
+        class="h-screen w-screen bg-[url('/assets/images/bg_exchange-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
         <div class="bg-gray-100 w-[1200px] flex flex-col items-center justify-center rounded-lg">
             {{--  cotegory select form  --}}
             <div class="ml-10 flex flex-col items-center">
-                <div class="text-xl font-bold mb-2 mt-10">The category is  <span class="text-5xl font-bold mx-3"> category names</span></div>
+                <div class="text-xl font-bold mb-2 mt-10">The category is  <span class="text-5xl font-bold mx-3"> {{ $exchange->category }}</span></div>
             </div>
 
             {{--  chat  --}}
@@ -21,7 +21,7 @@
                         {{--  viewed topic  --}}
                         <div class="flex flex-row">
                             {{--  user image  --}}
-                            <img src="../assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
+                            <img src="/assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
                             <div class="flex-col mt-1">
                                 {{--  name and time history  --}}
                                 <div class="flex items-center flex-1 px-4 font-bold leading-tight text-2xl">Noob master
@@ -57,7 +57,7 @@
                         {{--  respond   --}}
                         <div class="flex flex-row pt-1 md-10 md:ml-16">
                             {{--  user image  --}}
-                            <img src="../assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
+                            <img src="/assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
                             <div class="flex-col mt-1">
                                 {{--  user name and time history  --}}
                                 <div class="flex items-center flex-1 px-4 font-bold leading-tight">Emily
@@ -91,7 +91,7 @@
                         <hr class="my-2 ml-16 border-gray-200">
 
                         <div class="flex flex-row pt-1 md-10 md:ml-16">
-                            <img src="../assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
+                            <img src="/assets/images/user-circle.png" alt="User-pic" class="w-12 h-12 object-contain" />
                             <div class="flex-col mt-1">
                                 <div class="flex items-center flex-1 px-4 font-bold leading-tight">Noob master
                                     <span class="ml-2 text-xs font-normal text-gray-500">5 days ago</span>

@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExchangeSkill extends Model
 {
+    protected $table = 'exchange_skills';
+
     public function exchange()
     {
-        return $this->belongsTo('App\Exchange');
+        return $this->belongsTo('App\Models\Exchange');
     }
+
+    protected $fillable = [
+        'exchange_id',
+        'learn',
+        'teach',
+        'created_at'
+    ];
 }
