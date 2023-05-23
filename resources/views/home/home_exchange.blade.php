@@ -25,28 +25,29 @@
             <div class="ml-5 mt-15 flex justify-center w-screen mt-20">
 
                 {{--  textbox for what I want to know and what I can teach --}}
-                <form>
+                <form action="#" method="post">
+                    @csrf
                     <div
                         class="w-[600px] mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                         <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                             <label for="comment" class="sr-only"></label>
-                            <textarea id="comment" rows="4"
+                            <textarea id="comment" name="learn" rows="4"
                                 class="w-full px-0 text-m font-bold text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white"
                                 required>What I want to know:</textarea>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                             <label for="comment" class="sr-only"></label>
-                            <textarea id="comment" rows="4"
+                            <textarea id="comment" name="teach" rows="4"
                                 class="w-full px-0 text-m font-bold text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white"
                                 required>What I Can Teach:</textarea>
                         </div>
                         {{--  post button  --}}
                         <div class="grid justify-items-end px-3 py-2 border-t dark:border-gray-600">
                             <div class="my-1 ">
-                                <a href="#"
-                                    class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
-                                    Post
-                                </a>
+                                <button type="submit"
+                                        class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
+                                        Post
+                                </button>
                             </div>
 
                         </div>
