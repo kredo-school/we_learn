@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ExchangeSkill;
+use App\Models\Reply;
 
 class ExchangeController extends Controller
 {
@@ -58,7 +59,8 @@ class ExchangeController extends Controller
 
         if (Auth::guard('exchanges')->attempt($creds)) {
             $exchange = Exchange::find(Auth::guard('exchanges')->id());
-            return view('home.home_exchange', ['exchange' => $exchange]);
+            $exchangeSkills = ExchangeSkill::orderBy('created_at', 'DESC')->get(); // Fetch exchange skills from the database
+            return view('home.home_exchange', ['exchange' => $exchange, 'exchangeSkills' => $exchangeSkills]);
         } else
             return redirect()->route('exchange.login')->with('fail', 'Incorrect credentioals');
     }
@@ -104,7 +106,8 @@ class ExchangeController extends Controller
     public function home()
     {
         $exchange = Exchange::find(Auth::guard('exchanges')->id());
-        $exchangeSkills = ExchangeSkill::all(); // Fetch exchange skills from the database
+
+        $exchangeSkills = ExchangeSkill::orderBy('created_at', 'DESC')->get(); // Fetch exchange skills from the database
 
         return view('home.home_exchange', ['exchange' => $exchange, 'exchangeSkills' => $exchangeSkills ]);
     }
@@ -117,24 +120,33 @@ class ExchangeController extends Controller
         $exchangeSkill->exchange_id = Auth::guard('exchanges')->id();
         $exchangeSkill->save();
 
-        // You can add additional logic or redirect to another page after saving the data
-
         return redirect()->back();
     }
 
-    public function showChatExchange(Request $request)
+    public function showChatExchange(ExchangeSkill $exchangeSkill)
     {
         // Logic for retrieving the exchange skill data
-        $exchangeSkill = ExchangeSkill::find($request->exchange_skill_id);
-
         if ($exchangeSkill) {
-            $exchange = $exchangeSkill->exchange; // Assuming there's a relationship between ExchangeSkill and Exchange models
-
-            return view('home.exchange_category_chat', compact('exchange'));
+            // $exchange = Exchange::find(Auth::guard('exchanges')->id());
+            $exchange = $exchangeSkill->exchange;
+            return view('home.exchange_category_chat', compact('exchange', 'exchangeSkill'));
         }
 
         // Handle the case when exchange skill is not found
         return abort(404);
+    }
+
+    public function saveExchangeComment(Request $request, ExchangeSkill $exchangeSkill)
+    {
+        $exchange = Exchange::find(Auth::guard('exchanges')->id());
+
+        $exchange->comments()->create([
+            'comment' => $request->input('comment'),
+            'exchange_id' => $exchange->id,
+            'exchange_skill_id' => $exchangeSkill->id
+        ]);
+
+        return redirect()->back();
     }
 
 }

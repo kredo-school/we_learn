@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Reply;
+use App\Models\Comment;
+use App\Models\ExchangeSkill;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Exchange extends Authenticatable
@@ -13,15 +16,7 @@ class Exchange extends Authenticatable
     protected $table = 'exchanges';
 
     protected $guard = 'exchanges';
-    public function exchangeSkills()
-    {
-        return $this->hasMany('App\ExchangeSkill');
-    }
 
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
-    }
 
     protected $fillable = [
         'name',
@@ -40,4 +35,22 @@ class Exchange extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+    public function exchangeSkills()
+    {
+        return $this->hasMany(ExchangeSkill::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+
 }

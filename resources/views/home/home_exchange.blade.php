@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@include('after_login_nav')
-
 @section('contents')
+
+    @include('after_login_nav')
     <div
-        class="h-screen w-screen bg-[url('/assets/images/bg_exchange-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
-        <div class="bg-white w-[1200px] flex flex-col items-center justify-center rounded-lg">
+        class="h-screen w-full bg-[url('/assets/images/bg_exchange-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center">
+        <div class="bg-white w-[1200px] h-[900px] flex flex-col items-center justify-center rounded-lg overflow-y-auto overflow-x-hidden pt-[500px]">
             {{--  cotegory select form  --}}
             <div class="ml-10 mt-5 flex flex-col items-center">
                 <div class="text-xl mb-2">The category is</div>
                 <div class="text-3xl font-bold mb-2">{{ $exchange->category }}</div>
             </div>
 
-            <div class="ml-5 mt-15 flex justify-center w-screen mt-20">
+            <div class="ml-5 mt-15 flex justify-center w-full mt-20">
 
                 {{--  textbox for what I want to know and what I can teach --}}
                 <form action="{{ route('exchange.save-exchange-skills') }}" method="post">
@@ -46,7 +46,7 @@
             </div>
 
             {{--  lists for users who posted  --}}
-            <div class="flex justify-center w-screen mt-20 mb-20">
+            <div class="flex justify-center w-full mt-20 mb-20">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-[1000px] text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -89,7 +89,7 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="my-1 ">
-                                            <a href="{{ route('exchange.show.chat.exchange', ['exchange_skill_id' => $exchangeSkill->id]) }}"
+                                            <a href="{{ route('exchange.show.chat.exchange', ['exchange_skill' => $exchangeSkill->id]) }}"
                                                 class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md">
                                                 View
                                             </a>
