@@ -74,16 +74,6 @@ Route::get('/exchange/home', function () {
     return view('home.home_exchange');
 })->name('home_exchange');
 
-// route for click yes when buy ticket
-Route::get('/ticket/yes', function () {
-    return view('home.click_yes');
-})->name('ticket_yes');
-
-// route for payment page
-Route::get('/ticket/payment', function () {
-    return view('home.payment');
-})->name('payment');
-
 // route for teacher list
 Route::get('/list/teacher', function () {
     return view('home.teacher_list');
@@ -170,8 +160,11 @@ Route::prefix('learner')->name('learner.')->group(function () {
         Route::post('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfileSubmit'])->name('edit.submit');
         Route::post('/search-teacher', [App\Http\Controllers\LearnerController::class, 'searchTeacher'])->name('search.teacher');
         Route::get('/request/lesson/{reservation}/{learner}', [App\Http\Controllers\LearnerController::class, 'requestLesson'])->name('request.lesson');
+        Route::get('/payment/{ticket}', [App\Http\Controllers\LearnerController::class, 'payment'])->name('payment');
+
         Route::get('/chat/learner', function () {
             return view('home.chat_for_learner');
         })->name('chat_learner');
+        Route::get('/ticket/yes', [App\Http\Controllers\LearnerController::class, 'ticket'])->name('ticket.yes');
     });
 });
