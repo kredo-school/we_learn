@@ -90,9 +90,9 @@ Route::get('/list/teacher', function () {
 })->name('list');
 
 // route for lesson schedule for learner
-Route::get('/schedule/learner', function () {
-    return view('home.lesson_schedule_learner');
-})->name('schedule_learner');
+// Route::get('/schedule/learner', function () {
+//     return view('home.lesson_schedule_learner');
+// })->name('schedule_learner');
 
 
 
@@ -170,8 +170,14 @@ Route::prefix('learner')->name('learner.')->group(function () {
         Route::post('edit-profile/{id}', [App\Http\Controllers\LearnerController::class, 'editProfileSubmit'])->name('edit.submit');
         Route::post('/search-teacher', [App\Http\Controllers\LearnerController::class, 'searchTeacher'])->name('search.teacher');
         Route::get('/request/lesson/{reservation}/{learner}', [App\Http\Controllers\LearnerController::class, 'requestLesson'])->name('request.lesson');
-        Route::get('/chat/learner', function () {
-            return view('home.chat_for_learner');
-        })->name('chat_learner');
+        Route::get('/schedule/learner', [App\Http\Controllers\LearnerController::class, 'showSchedule'])->name('schedule_learner');
+        Route::delete('/reservations/{reservation}', [App\Http\Controllers\LearnerController::class, 'deleteReservation'])->name('delete.schedule');
+
+        // Route::get('/schedule/learner', function () {
+        //     return view('home.lesson_schedule_learner');
+        // })->name('schedule_learner');
+        // Route::get('/chat/learner', function () {
+        //     return view('home.chat_for_learner');
+        // })->name('chat_learner');
     });
 });

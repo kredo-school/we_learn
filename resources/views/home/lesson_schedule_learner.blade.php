@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@include('after_learners_nav')
-
 @section('contents')
-    <div class="h-screen w-screen bg-[url('../assets/images/register-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
+    @include('after_learners_nav')
+    <div
+        class="h-screen w-screen bg-[url('/assets/images/register-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
         <div class="bg-white w-[1200px] flex flex-col items-center justify-center rounded-lg py-10">
-            <div class="flex justify-center font-bold mb-5 text-xl">Jennie’s lessons are here</div>
+            <div class="flex justify-center font-bold mb-5 text-xl">{{ $learner->name }}’s lessons are here</div>
             <div class="flex justify-center w-screen">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -32,37 +32,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th scope="row"
-                                    class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="/assets/images/user-circle.png" alt="image">
-                                    <div class="pl-3">
-                                        <div class="text-base font-semibold">Neil Sims</div>
-                                    </div>
-                                </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    English
-                                </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    21/03/2023
-                                </th>
-                                <td class="px-6 py-4">
-                                    5:00 PM
-                                </td>
-                                <td class="px-6 py-4">
-                                    Online
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div data-modal-target="cancel-lesson" data-modal-toggle="cancel-lesson">
-                                        <a href="#"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
-                                            <img src="../assets/images/cancel.png" alt="cancel" class="h-5 w-5">
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($reservations as $reservation)
+                                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+
+                                    <th scope="row"
+                                        class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ ($reservation->teacher->profile_img != null) ? $reservation->teacher->profile_img : url('/assets/images/insert-photo.jpg') }}"
+                                            alt="image">
+                                        <div class="pl-3">
+                                            <div class="text-base font-semibold">{{ $reservation->teacher->name }}</div>
+                                        </div>
+                                    </th>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $reservation->teacher->subject }}
+                                    </th>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $reservation->date }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ $reservation->time }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $reservation->teacher->learning_mode }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div data-modal-target="cancel-lesson" data-modal-toggle="cancel-lesson">
+                                            <a href="#"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
+                                                <img src="/assets/images/cancel.png" alt="cancel" class="h-5 w-5">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -150,15 +155,19 @@
                     </div>
 
                     {{--  button for yes  --}}
-                    <a href="#">
+                    <form action="{{ route('learner.delete.schedule', ['reservation' => $reservation->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                        <a href="#">
+                            <button data-modal-hide="cancel-lesson" type="submit"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Yes</button>
+                        </a>
+
+
+                        {{--  button for no  --}}
                         <button data-modal-hide="cancel-lesson" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Yes</button>
-                    </a>
-
-
-                    {{--  button for no  --}}
-                    <button data-modal-hide="cancel-lesson" type="button"
-                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                    </form>
                 </div>
             </div>
         </div>

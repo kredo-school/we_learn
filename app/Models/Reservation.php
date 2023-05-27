@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Learner;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reservation extends Model
 {
@@ -12,12 +14,12 @@ class Reservation extends Model
 
     public function teacher()
     {
-        return $this->belongsTo('App\Models\Teacher');
+        return $this->belongsTo(Teacher::class);
     }
 
     public function learner()
     {
-        return $this->belongsTo('App\Learner');
+        return $this->belongsTo(Learner::class);
     }
 
     protected $fillable = [
