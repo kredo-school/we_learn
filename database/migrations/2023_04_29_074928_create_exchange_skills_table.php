@@ -15,11 +15,12 @@ class CreateExchangeSkillsTable extends Migration
     {
         Schema::create('exchange_skills', function (Blueprint $table) {
             $table->id();
-            $table->integer('exchange_id');
-            $table->time('time');
+            $table->unsignedBigInteger('exchange_id');
             $table->string('teach', 255);
             $table->string('learn', 255);
             $table->timestamps();
+
+            $table->foreign('exchange_id')->references('id')->on('exchanges')->onDelete('cascade');
         });
     }
 

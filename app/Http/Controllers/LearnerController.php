@@ -189,6 +189,25 @@ class LearnerController extends Controller
 
         return redirect()->back();
     }
+    public function payment($ticket, Learner $learner)
+    {
+        $learner = Learner::find(Auth::guard('learners')->id());
+
+        // Logic to process payment and other actions
+
+        // Set the pay button text based on the selected ticket
+        $payButtonText = 'Pay $' . $ticket;
+
+        // Pass the payButtonText variable to your view
+        return view('home.payment', ['payButtonText' => $payButtonText, 'learner' => $learner]);
+    }
+
+    public function ticket()
+    {
+        $learner = Learner::find(Auth::guard('learners')->id());
+
+        return view('home.click_yes', ['learner' => $learner]);
+    }
 }
 
 

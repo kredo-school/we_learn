@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepliesTable extends Migration
+class AddExchangeCommentIdInCommentLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateRepliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('exchange_id');
+        Schema::table('comment_likes', function (Blueprint $table) {
             $table->unsignedBigInteger('comment_id');
-            $table->longtext('reply');
-            $table->timestamps();
 
-            $table->foreign('exchange_id')->references('id')->on('exchanges')->onDelete('cascade');
             $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
         });
     }
@@ -32,6 +27,8 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        Schema::table('comment_likes', function (Blueprint $table) {
+            //
+        });
     }
 }

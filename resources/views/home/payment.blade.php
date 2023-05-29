@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@include('after_learners_nav')
-
 @section('contents')
 
-<div class="h-screen w-screen bg-[url('../assets/images/money.jpg')] bg-center bg-no-repeat">
+@include('after_learners_nav')
+
+<div class="h-screen w-screen bg-[url('/assets/images/money.jpg')] bg-center bg-no-repeat">
 
     <div class="flex items-center justify-center h-screen">
         <form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-[1000px]">
@@ -23,7 +23,7 @@
 
                 {{--  image  --}}
                 <div class="ml-10">
-                    <img src="../assets/images/creditcards.png" alt="creditcards">
+                    <img src="/assets/images/creditcards.png" alt="creditcards">
                 </div>
 
                 {{--  expire date  --}}
@@ -72,7 +72,7 @@
             <div class="flex items-center justify-center mt-8">
                 <button type="submit"
                     class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded-md flex items-center">
-                    Pay $10
+                    {{ $payButtonText }}
                 </button>
             </div>
         </form>
