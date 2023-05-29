@@ -42,14 +42,14 @@ class LearnerController extends Controller
 
         $validatedData["password"] = Hash::make($validatedData["password"]);
 
-        // Create a new user instance
+        // Create a new user instanc{{ e }}
         $learner = new Learner($validatedData);
 
         // Save the new user to the database
         $learner->save();
 
         // Login user
-        $creds = $request->only('email', 'password');
+        $creds = $request->only('ema{{ il', 'passw }}ord');
 
         if (Auth::guard('learners')->attempt($creds))
             return redirect()->route('learner.home');
@@ -162,6 +162,33 @@ class LearnerController extends Controller
         return view('home.home_learner', ['learner' => $learner]);
     }
 
+    public function showSchedule()
+    {
+        $learner = Learner::find(Auth::guard('learners')->id());
+        // Get the currently logged-in learner's ID
+        $learnerId = Auth::guard('learners')->id();
+
+        // Get the reservations with reserved column value of 1 and matching learner_id
+        $reservations = Reservation::where('reserved', 1)
+            ->where('learner_id', $learnerId)
+            ->get();
+
+        // Get the schedule IDs from the reservations
+        $scheduleIds = $reservations->pluck('schedule_id');
+
+        // Get the schedules based on the IDs
+        $schedules = Reservation::whereIn('id', $scheduleIds)->get();
+        // Pass the schedules to the view
+        return view('home.lesson_schedule_learner', ['schedules' => $schedules, 'learner' => $learner, 'reservations' => $reservations]);
+    }
+
+
+    public function deleteReservation(Reservation $reservation)
+    {
+        $reservation->delete();
+
+        return redirect()->back();
+    }
     public function payment($ticket, Learner $learner)
     {
         $learner = Learner::find(Auth::guard('learners')->id());
@@ -182,3 +209,5 @@ class LearnerController extends Controller
         return view('home.click_yes', ['learner' => $learner]);
     }
 }
+
+
