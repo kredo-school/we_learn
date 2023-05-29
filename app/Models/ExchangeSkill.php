@@ -10,6 +10,13 @@ class ExchangeSkill extends Model
 {
     protected $table = 'exchange_skills';
 
+    protected $fillable = [
+        'exchange_id',
+        'learn',
+        'teach',
+        'created_at'
+    ];
+
     public function exchange()
     {
         return $this->belongsTo('App\Models\Exchange');
@@ -19,10 +26,13 @@ class ExchangeSkill extends Model
         return $this->hasMany(Comment::class);
     }
 
-    protected $fillable = [
-        'exchange_id',
-        'learn',
-        'teach',
-        'created_at'
-    ];
+    public function reactions() {
+        return $this->belongsToMany(Exchange::class, 'likes', 'exchange_skill_id', 'exchange_id');
+    }
+
+    public function reactedBy($exchange_id) {
+        return $this->reactions()->where('exchange_id', $exchange_id)->first();
+    }
+
+    
 }

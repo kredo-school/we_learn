@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ExchangeSkill;
 use App\Models\Reply;
+use App\Models\Comment;
 
 class ExchangeController extends Controller
 {
@@ -148,5 +149,29 @@ class ExchangeController extends Controller
 
         return redirect()->back();
     }
+
+    public function saveExchangeSkillReaction(ExchangeSkill $exchangeSkill, Exchange $exchange)
+    {
+        if($exchangeSkill->reactedBy($exchange->id)) {
+            $exchangeSkill->reactions()->detach($exchange->id);
+        } else {
+            $exchangeSkill->reactions()->attach($exchange->id);
+        }
+
+        return redirect()->back();
+    }
+
+    public function saveCommentReaction(Comment $comment, Exchange $exchange)
+    {
+
+        if($comment->reactedBy($exchange->id)) {
+            $comment->reactions()->detach($exchange->id);
+        } else {
+            $comment->reactions()->attach($exchange->id);
+        }
+
+        return redirect()->back();
+    }
+
 
 }

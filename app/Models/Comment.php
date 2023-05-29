@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
-    protected $fillable = ['comment', 'exchange_id', 'exchange_skill_id'];
+    protected $fillable = ['comment', 'exchange_id', 'exchange_skill_id','comment_id'];
 
     public function exchange()
     {
@@ -35,6 +35,14 @@ class Comment extends Model
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function reactions() {
+        return $this->belongsToMany(Exchange::class, 'comment_likes','comment_id','exchange_id');
+    }
+
+    public function reactedBy($exchange_id) {
+        return $this->reactions()->where('exchange_id', $exchange_id)->first();
     }
 }
 

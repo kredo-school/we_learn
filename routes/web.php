@@ -155,8 +155,10 @@ Route::prefix('exchange')->name('exchange.')->group(function () {
         Route::post('/save-exchange-skills', [App\Http\Controllers\ExchangeController::class, 'saveExchangeSkill'])->name('save-exchange-skills');
         Route::get('/chat/{exchange_skill}', [App\Http\Controllers\ExchangeController::class, 'showChatExchange'])->name('show.chat.exchange');
         Route::post('/{exchange_skill}/{exchange}/replies', [App\Http\Controllers\ExchangeController::class,'saveExchangeComment'])->name('comment.save');
+        Route::post('/{exchange_skill}/{exchange}/react', [App\Http\Controllers\ExchangeController::class,'saveExchangeSkillReaction'])->name('react.skill');
+        Route::post('/{comment}/{exchange}/react-reply', [App\Http\Controllers\ExchangeController::class,'saveCommentReaction'])->name('react.comment');
 
-        // Route::get('/exchange-skills', function () {
+        // Route::get('/exchange-skills', function ()
         //     return view('exchange-skills.create');
         // })->name('exchange-skills.create');
     });
