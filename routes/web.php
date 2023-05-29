@@ -94,7 +94,10 @@ Route::get('/schedule/learner', function () {
     return view('home.lesson_schedule_learner');
 })->name('schedule_learner');
 
-
+// exchange category chat after clicking view button
+// Route::get('/chat/exchange', function () {
+ //     return view('home.exchange_category_chat');
+ // })->name('chat_exchange');
 
 // route for after clicking view button page
 Route::get('/view/teacherprofile', function () {
@@ -131,8 +134,6 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
         Route::get('/accept', [App\Http\Controllers\TeacherController::class, 'showAcceptButton'])->name('accept');
         Route::put('/accept/lesso/{reservation}', [App\Http\Controllers\TeacherController::class, 'acceptLesson'])->name('accept.lesson');
-
-
     });
 });
 
@@ -147,10 +148,19 @@ Route::prefix('exchange')->name('exchange.')->group(function () {
     });
 
     Route::middleware(['auth:exchanges'])->group(function () {
-        Route::view('/home', 'home.home_exchange')->name('home');
+        Route::get('/home', [App\Http\Controllers\ExchangeController::class, 'home'])->name('home');
         Route::get('profile/{id}', [App\Http\Controllers\ExchangeController::class, 'showProfile'])->name('show.profile');
         Route::get('edit-profile/{id}', [App\Http\Controllers\ExchangeController::class, 'editProfile'])->name('edit.profile');
         Route::post('edit-profile/{id}', [App\Http\Controllers\ExchangeController::class, 'editProfileSubmit'])->name('edit.submit');
+        Route::post('/save-exchange-skills', [App\Http\Controllers\ExchangeController::class, 'saveExchangeSkill'])->name('save-exchange-skills');
+        Route::get('/chat/{exchange_skill}', [App\Http\Controllers\ExchangeController::class, 'showChatExchange'])->name('show.chat.exchange');
+        Route::post('/{exchange_skill}/{exchange}/replies', [App\Http\Controllers\ExchangeController::class,'saveExchangeComment'])->name('comment.save');
+        Route::post('/{exchange_skill}/{exchange}/react', [App\Http\Controllers\ExchangeController::class,'saveExchangeSkillReaction'])->name('react.skill');
+        Route::post('/{comment}/{exchange}/react-reply', [App\Http\Controllers\ExchangeController::class,'saveCommentReaction'])->name('react.comment');
+
+        // Route::get('/exchange-skills', function ()
+        //     return view('exchange-skills.create');
+        // })->name('exchange-skills.create');
     });
 });
 
