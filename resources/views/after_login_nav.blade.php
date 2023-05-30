@@ -25,10 +25,13 @@
               class="w-4 h-4 object-cover rounded-full mr-2" />
             <span class="text-sm text-black">Profile</span>
           </a>
-          <a href="{{ url('/') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
-            <img src="/assets/images/logout.png" alt="logout" class="w-4 h-4 object-contain mr-2" />
-            <span class="text-sm text-black">Logout</span>
-          </a>
+          <form method="POST" action="{{ route('exchange.logout') }}">
+            @csrf
+            <button type="submit" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex items-center">
+                <img src="/assets/images/logout.png" alt="logout" class="w-4 h-4 object-contain mr-2" />
+                <span class="text-sm text-black">Logout</span>
+            </button>
+        </form>
         </div>
       </div>
 

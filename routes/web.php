@@ -21,88 +21,15 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/exchanges-register', function () {
-    return view('auth.exchanges_register');
-})->name('exchanges_register');
-
-Route::get('/teachers-register', function () {
-    return view('auth.teachers_register');
-})->name('teachers_register');
+// Contact us
+Route::get('/contact_us', function () {
+    return view('contact_us');
+})->name('contact_us');
 
 // FAQ
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
-
-
-Route::get('/exchanges', function () {
-    return view('profile.exchanges');
-})->name('exchanges');
-
-// EDIT PROFILE
-Route::get('/editprofile/learners', function () {
-    return view('edit_profile.learners');
-})->name('edit_profile.learners');
-
-Route::get('/editprofile/teachers', function () {
-    return view('edit_profile.teachers');
-})->name('edit_profile.teachers');
-
-Route::get('/editprofile/exchanges', function () {
-    return view('edit_profile.exchanges');
-})->name('edit_profile.exchanges');
-
-
-Route::get('/teachers-login', function () {
-    return view('auth.teachers_login');
-})->name('teachers_login');
-
-Route::get('/exchanges-login', function () {
-    return view('auth.exchanges_login');
-})->name('exchanges_login');
-
-//route for homepages
-Route::get('/learner/home', function () {
-    return view('home.home_learner');
-})->name('home_learner');
-
-Route::get('/teacher/home', function () {
-    return view('home.home_teacher');
-})->name('home_teacher');
-
-Route::get('/exchange/home', function () {
-    return view('home.home_exchange');
-})->name('home_exchange');
-
-// route for teacher list
-Route::get('/list/teacher', function () {
-    return view('home.teacher_list');
-})->name('list');
-
-// route for lesson schedule for learner
-// Route::get('/schedule/learner', function () {
-//     return view('home.lesson_schedule_learner');
-// })->name('schedule_learner');
-
-// exchange category chat after clicking view button
-// Route::get('/chat/exchange', function () {
- //     return view('home.exchange_category_chat');
- // })->name('chat_exchange');
-
-// route for after clicking view button page
-Route::get('/view/teacherprofile', function () {
-    return view('home.click_view');
-})->name('click_view');
-
-// exchange category chat after clicking view button
-Route::get('/chat/exchange', function () {
-    return view('home.exchange_category_chat');
-})->name('chat_exchange');
-
-// Contact us
-Route::get('/contact_us', function () {
-    return view('contact_us');
-})->name('contact_us');
 
 // Teacher Group for login
 Route::prefix('teacher')->name('teacher.')->group(function () {
@@ -124,6 +51,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
         Route::get('/accept', [App\Http\Controllers\TeacherController::class, 'showAcceptButton'])->name('accept');
         Route::put('/accept/lesso/{reservation}', [App\Http\Controllers\TeacherController::class, 'acceptLesson'])->name('accept.lesson');
+        Route::post('/logout', [App\Http\Controllers\TeacherController::class, 'logout'])->name('logout');
     });
 });
 
@@ -147,6 +75,7 @@ Route::prefix('exchange')->name('exchange.')->group(function () {
         Route::post('/{exchange_skill}/{exchange}/replies', [App\Http\Controllers\ExchangeController::class,'saveExchangeComment'])->name('comment.save');
         Route::post('/{exchange_skill}/{exchange}/react', [App\Http\Controllers\ExchangeController::class,'saveExchangeSkillReaction'])->name('react.skill');
         Route::post('/{comment}/{exchange}/react-reply', [App\Http\Controllers\ExchangeController::class,'saveCommentReaction'])->name('react.comment');
+        Route::post('/logout', [App\Http\Controllers\ExchangeController::class, 'logout'])->name('logout');
 
         // Route::get('/exchange-skills', function ()
         //     return view('exchange-skills.create');
@@ -178,5 +107,7 @@ Route::prefix('learner')->name('learner.')->group(function () {
             return view('home.chat_for_learner');
         })->name('chat_learner');
         Route::get('/ticket/yes', [App\Http\Controllers\LearnerController::class, 'ticket'])->name('ticket.yes');
+        Route::post('/logout', [App\Http\Controllers\LearnerController::class, 'logout'])->name('logout');
     });
+
 });

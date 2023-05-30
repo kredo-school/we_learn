@@ -173,5 +173,11 @@ class ExchangeController extends Controller
         return redirect()->back();
     }
 
+    public function logout()
+    {
+        Auth::guard('exchanges')->logout();
+        return redirect()->route('exchange.login')->with('success', 'Logged out successfully');
+    }
+
 
 }

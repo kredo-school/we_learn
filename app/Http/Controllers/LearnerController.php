@@ -208,6 +208,12 @@ class LearnerController extends Controller
 
         return view('home.click_yes', ['learner' => $learner]);
     }
+
+    public function logout()
+    {
+        Auth::guard('learners')->logout();
+        return redirect()->route('learner.login')->with('success', 'Logged out successfully');
+    }
 }
 
 

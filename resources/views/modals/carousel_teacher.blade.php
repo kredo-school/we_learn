@@ -46,7 +46,7 @@
                     {{--  good point & link button  --}}
                     <div class="py-12 px-20">
                         <p class="text-2xl font-bold mb-10">Let’’s be a teacher!!</p>
-                        <a href="{{ route('teachers_register') }}" class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded">
+                        <a href="{{ route('teacher.register') }}" class="bg-[#F6A5B3] hover:bg-[#ED4C59] text-white font-bold py-2 px-4 rounded">
                             Create Your Account
                         </a>
                     </div>
