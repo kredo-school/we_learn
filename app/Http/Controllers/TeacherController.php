@@ -61,7 +61,8 @@ class TeacherController extends Controller
 
         if (Auth::guard('teachers')->attempt($creds)) {
             $teacher = Teacher::find(Auth::guard('teachers')->id());
-            return view('home.home_teacher', ['teacher' => $teacher]);
+            $reservations = Reservation::all();
+            return view('home.home_teacher', ['teacher' => $teacher,'reservations'=>$reservations]);
         } else
             return redirect()->route('teacher.login')->with('fail', 'Incorrect credentioals');
     }
@@ -106,7 +107,6 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::find(Auth::guard('teachers')->id());
         $reservations = Reservation::all();
-
         return view('home.home_teacher', ['teacher' => $teacher, 'reservations' => $reservations]);
     }
 
@@ -198,5 +198,11 @@ class TeacherController extends Controller
         $reservation->save();
 
         return redirect()->back()->with('success', 'Reservation updated successfully.');
+    }
+
+    public function logout()
+    {
+        Auth::guard('teachers')->logout();
+        return redirect()->route('teacher.login')->with('success', 'Logged out successfully');
     }
 }

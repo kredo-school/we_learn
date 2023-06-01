@@ -8,8 +8,8 @@
         <div class="bg-white w-[1000px] flex flex-col items-center justify-center rounded-lg py-10">
 
             {{--  reserved table  --}}
-            @if ($reservations->where('reserved', 1)->isNotEmpty())
-                <div class="flex justify-center font-bold mb-5 text-2xl">You’ve got reservation!! </div>
+            @if ($reservations->where('reserved', 1)->where('teacher_id', $teacher->id)->isNotEmpty())
+                <div class="flex justify-center font-bold mb-5 text-2xl">You've got a reservation!!</div>
                 <div class="flex justify-center w-screen">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -27,34 +27,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($reservations as $reservation)
-                                    @if ($reservation->reserved == 1)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $reservation->date }}
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                {{ \Carbon\Carbon::parse($reservation->time)->format('h:i A') }}
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                <div data-modal-target="cancel-reservation"
-                                                    data-modal-toggle="cancel-reservation">
-                                                    <a href="#"
-                                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
-                                                        <img src="/assets/images/cancel.png" alt="cancel" class="h-5 w-5">
-                                                    </a>
-                                                </div>
-                                                @include('modals.modal_cancel_reservation_for_teacher')
-                                            </td>
-                                        </tr>
-                                    @endif
+                                @foreach ($reservations->where('reserved', 1)->where('teacher_id', $teacher->id) as $reservation)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $reservation->date }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ \Carbon\Carbon::parse($reservation->time)->format('h:i A') }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div data-modal-target="cancel-reservation"
+                                                data-modal-toggle="cancel-reservation">
+                                                <a href="#"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex justify-center items-center">
+                                                    <img src="/assets/images/cancel.png" alt="cancel" class="h-5 w-5">
+                                                </a>
+                                            </div>
+                                            @include('modals.modal_cancel_reservation_for_teacher')
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             @endif
+
 
 
             {{-- Available button for Modal --}}
