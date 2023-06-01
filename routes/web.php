@@ -50,7 +50,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::post('/{teacher}/edit-schedule/{reservation}', [App\Http\Controllers\TeacherController::class, 'updateSchedle'])->name('updateSchedle');
         Route::delete('/reservations/{reservation}', [App\Http\Controllers\TeacherController::class, 'deleteReservation'])->name('delete.schedule');
         Route::get('/accept', [App\Http\Controllers\TeacherController::class, 'showAcceptButton'])->name('accept');
-        Route::put('/accept/lesso/{reservation}', [App\Http\Controllers\TeacherController::class, 'acceptLesson'])->name('accept.lesson');
+        Route::put('/accept/lesson/{reservation}', [App\Http\Controllers\TeacherController::class, 'acceptLesson'])->name('accept.lesson');
         Route::post('/logout', [App\Http\Controllers\TeacherController::class, 'logout'])->name('logout');
     });
 });

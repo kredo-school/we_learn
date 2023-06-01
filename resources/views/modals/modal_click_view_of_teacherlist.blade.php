@@ -21,11 +21,10 @@
             <main class="profile-page">
                 <section class="relative block h-500-px">
                     {{-- background-image --}}
-                    <div class="absolute top-0 w-full h-full bg-center bg-cover"
-                        style="
-                        background-image: url('/assets/images/pexels-andrea-piacquadio-3781789.jpg');
-                      ">
+                    <div class="absolute top-0 w-full h-full bg-center bg-cover">
                         <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+                        <img src="{{ $teacher->profile_img != null ? $teacher->profile_img : url('/assets/images/insert-photo.jpg') }}"
+                            alt="profile" class="object-cover w-full h-full" />
                     </div>
                     <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
                         style="transform: translateZ(0px)">
@@ -47,9 +46,9 @@
                                     <div class="w-full flex justify-center">
                                         <div class="relative flex justify-center items-center w-full">
 
-                                            <div
-                                                class="bg-[url('/assets/images/pexels-andrea-piacquadio-3781789.jpg')] shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 bg-center bg-cover bg-no-repeat">
-                                            </div>
+                                            <img src="{{ $teacher->profile_img != null ? $teacher->profile_img : url('/assets/images/insert-photo.jpg') }}"
+                                                alt="profile" height="150px" width="150px"
+                                                class="shadow-xl rounded-full h-[150px] w-[150px] align-middle border-none absolute -m-16 -ml-20 object-cover" />
 
                                         </div>
                                     </div>
@@ -95,13 +94,13 @@
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-restroom mr-2 text-lg text-blueGray-400"></i>
                                         Gender :
-                                        <span class="mb-2 text-blueGray-600">{{$teacher->gender}}</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->gender }}</span>
                                     </div>
                                     {{-- Occupation --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
                                         Occupation :
-                                        <span class="mb-2 text-blueGray-600">{{$teacher->occupation}}</span>
+                                        <span class="mb-2 text-blueGray-600">{{ $teacher->occupation }}</span>
                                     </div>
                                     {{-- Language --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
@@ -113,7 +112,8 @@
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
                                         <i class="fa-solid fa-book mr-2 text-lg text-blueGray-400"></i>
                                         Subject :
-                                        <span class="mb-2 text-blueGray-600">I'm good at {{ $teacher->subject }}.</span>
+                                        <span class="mb-2 text-blueGray-600">I'm good at
+                                            {{ $teacher->subject }}.</span>
                                     </div>
                                     {{-- About me  --}}
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold">
