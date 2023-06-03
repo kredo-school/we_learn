@@ -122,7 +122,7 @@
                                             @include('modals.modal_delete_available')
                                         </td>
                                         <td class="px-6 py-4">
-                                            @if ($reservation->reserved == 1)
+                                            @if ($reservation->learner_id != null)
                                                 <div data-modal-target="accept-available"
                                                     data-modal-toggle="accept-available-{{ $key }}">
                                                     <a href="#"
