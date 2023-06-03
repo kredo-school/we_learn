@@ -22,11 +22,6 @@ class Comment extends Model
         return $this->belongsTo(ExchangeSkill::class);
     }
 
-    // public function learner()
-    // {
-    //     return $this->belongsTo('App\Learner');
-    // }
-
     public function replies()
     {
         return $this->hasMany(Reply::class);
