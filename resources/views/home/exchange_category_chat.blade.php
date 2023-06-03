@@ -21,7 +21,7 @@
 
                             <div class="flex flex-row">
                             {{--  user image  --}}
-                                <img src="{{ $exchange->profile_img != null ? $exchange->profile_img : url('/assets/images/insert-photo.jpg') }}" alt="User-pic" class="w-12 h-12 object-contain" />
+                                <img src="{{ $exchange->profile_img != null ? $exchange->profile_img : url('/assets/images/insert-photo.jpg') }}" alt="User-pic" class="w-10 h-10 rounded-full" />
                                 <div class="flex-col mt-1">
                                     {{--  name and time history  --}}
                                     <div class="flex items-center flex-1 px-4 font-bold leading-tight text-2xl">
@@ -62,8 +62,8 @@
                         @foreach ($exchangeSkill->comments as $comment)
                         <div class="flex flex-row pt-1 md-10 md:ml-16">
                             {{--  user image  --}}
-                            <img src="{{ $exchange->profile_img != null ? $exchange->profile_img : url('/assets/images/insert-photo.jpg') }}"
-                                alt="User-pic" class="w-12 h-12 object-contain" />
+                            <img src="{{ $comment->exchange->profile_img != null ? $comment->exchange->profile_img : url('/assets/images/insert-photo.jpg') }}"
+                                alt="User-pic" class="w-10 h-10 rounded-full" />
                             <div class="flex-col mt-1">
                                 {{--  user name and time history  --}}
 

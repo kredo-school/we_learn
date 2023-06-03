@@ -59,10 +59,8 @@ class ExchangeController extends Controller
         $creds = $request->only('email', 'password');
 
         if (Auth::guard('exchanges')->attempt($creds)) {
-            $exchange = Exchange::find(Auth::guard('exchanges')->id());
-            $exchangeSkills = ExchangeSkill::orderBy('created_at', 'DESC')->get(); // Fetch exchange skills from the database
-            return view('home.home_exchange', ['exchange' => $exchange, 'exchangeSkills' => $exchangeSkills]);
-        } else
+            return redirect()->route('exchange.home');
+        } else{{  }}
             return redirect()->route('exchange.login')->with('fail', 'Incorrect credentioals');
     }
 
