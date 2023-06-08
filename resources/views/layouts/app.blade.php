@@ -48,6 +48,8 @@
     <!-- <link rel="stylesheet" href="./assets/styles/styles.css" /> -->
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 
+    @yield('script')
+
 </head>
 
 <body>
