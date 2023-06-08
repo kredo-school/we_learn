@@ -72,9 +72,9 @@ Route::prefix('exchange')->name('exchange.')->group(function () {
         Route::post('edit-profile/{id}', [App\Http\Controllers\ExchangeController::class, 'editProfileSubmit'])->name('edit.submit');
         Route::post('/save-exchange-skills', [App\Http\Controllers\ExchangeController::class, 'saveExchangeSkill'])->name('save-exchange-skills');
         Route::get('/chat/{exchange_skill}', [App\Http\Controllers\ExchangeController::class, 'showChatExchange'])->name('show.chat.exchange');
-        Route::post('/{exchange_skill}/{exchange}/replies', [App\Http\Controllers\ExchangeController::class,'saveExchangeComment'])->name('comment.save');
-        Route::post('/{exchange_skill}/{exchange}/react', [App\Http\Controllers\ExchangeController::class,'saveExchangeSkillReaction'])->name('react.skill');
-        Route::post('/{comment}/{exchange}/react-reply', [App\Http\Controllers\ExchangeController::class,'saveCommentReaction'])->name('react.comment');
+        Route::post('/{exchange_skill}/{exchange}/replies', [App\Http\Controllers\ExchangeController::class, 'saveExchangeComment'])->name('comment.save');
+        Route::post('/{exchange_skill}/{exchange}/react', [App\Http\Controllers\ExchangeController::class, 'saveExchangeSkillReaction'])->name('react.skill');
+        Route::post('/{comment}/{exchange}/react-reply', [App\Http\Controllers\ExchangeController::class, 'saveCommentReaction'])->name('react.comment');
         Route::post('/logout', [App\Http\Controllers\ExchangeController::class, 'logout'])->name('logout');
 
         // Route::get('/exchange-skills', function ()
@@ -88,8 +88,8 @@ Route::prefix('learner')->name('learner.')->group(function () {
     Route::middleware(['guest:learners'])->group(function () {
         Route::view('/login', 'auth.learners_login')->name('login');
         Route::view('/register', 'auth.learners_register')->name('register');
-        Route::post('/login', [App\Http\Controllers\learnerController::class, 'login'])->name('login');
-        Route::post('/register', [App\Http\Controllers\learnerController::class, 'register'])->name('register');
+        Route::post('/login', [App\Http\Controllers\LearnerController::class, 'login'])->name('login');
+        Route::post('/register', [App\Http\Controllers\LearnerController::class, 'register'])->name('register');
     });
 
     Route::middleware(['auth:learners'])->group(function () {
@@ -109,5 +109,4 @@ Route::prefix('learner')->name('learner.')->group(function () {
         Route::get('/ticket/yes', [App\Http\Controllers\LearnerController::class, 'ticket'])->name('ticket.yes');
         Route::post('/logout', [App\Http\Controllers\LearnerController::class, 'logout'])->name('logout');
     });
-
 });
