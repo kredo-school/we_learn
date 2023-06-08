@@ -10,13 +10,13 @@
                 Login
             </button>
             <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-                <a href="/{{ route('learner.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('learner.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Learner
                 </a>
-                <a href="/{{ route('teacher.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('teacher.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Teacher
                 </a>
-                <a href="/{{ route('exchange.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('exchange.login') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Exchange
                 </a>
             </div>
@@ -26,18 +26,18 @@
                 Register
             </button>
             <div class="absolute z-10 hidden bg-white rounded-lg shadow-md">
-                <a href="/{{ route('learner.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('learner.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Learner
                 </a>
-                <a href="/{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('teacher.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Teacher
                 </a>
-                <a href="/{{ route('exchange.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('exchange.register') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Exchange
                 </a>
             </div>
         </div>
-        <a href="/{{ route('contact_us') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-6">
+        <a href="{{ route('contact_us') }}" class="text-sm text-black hover:text-[#ED4C59] px-4 py-2 mr-6">
             Contact us
         </a>
     </div>
