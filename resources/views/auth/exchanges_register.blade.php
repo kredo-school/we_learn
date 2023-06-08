@@ -5,7 +5,8 @@
 @section('contents')
     <div class="h-screen w-screen bg-[url('/assets/images/bg_exchange-modified.jpg')] bg-cover bg-center bg-no-repeat">
         <div class="flex items-center justify-center h-screen">
-            <form action="{{ route('exchange.register') }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[1000px]">
+            <form action="/{{ route('exchange.register') }}" method="post"
+                class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[1000px]">
                 @csrf
                 <div class="text-center text-3xl font-bold mb-5">Exchange's Register</div>
                 <div class="grid grid-cols-2 gap-4">
@@ -101,7 +102,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="residence">
                             Residence
                         </label>
-                        <input  name="residence" value="{{ old('residence') }}"
+                        <input name="residence" value="{{ old('residence') }}"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="register" type="text" placeholder="Enter your registration details">
                     </div>
