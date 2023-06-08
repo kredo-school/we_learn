@@ -49,7 +49,7 @@ class LearnerController extends Controller
         $learner->save();
 
         // Login user
-        $creds = $request->only('ema{{ il', 'passw }}ord');
+        $creds = $request->only('email', 'password');
 
         if (Auth::guard('learners')->attempt($creds))
             return redirect()->route('learner.home');
