@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contents')
-    <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ mix('/js/modal.js') }}"></script>
 
     @include('landing_nav')
     <div class="h-screen bg-cover bg-center bg-[url('/assets/images/students.jpg')] grayscale">
@@ -44,5 +44,4 @@
 
         </div>
     </div>
-
 @endsection

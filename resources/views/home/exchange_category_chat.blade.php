@@ -2,7 +2,7 @@
 
 @section('contents')
     @include('after_login_nav')
-    <script src="{{ asset('/js/comment.js') }}"></script>
+    <script src="{{ mix('/js/comment.js') }}"></script>
     <div
         class="h-screen w-screen bg-[url('/assets/images/bg_exchange-modified.jpg')] bg-center bg-no-repeat flex flex-col items-center justify-center py-[500px]">
         <div class="bg-gray-100 w-[1200px] flex flex-col items-center justify-center rounded-lg">
